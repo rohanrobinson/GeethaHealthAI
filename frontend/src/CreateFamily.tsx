@@ -1,5 +1,10 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import {
+  clearFamilyStorage,
+  getFamilyStorage,
+  saveFamilyStorage,
+} from './familyStorage.ts'
 
 type FamilyMember = {
   id: string
@@ -10,13 +15,23 @@ type FamilyMember = {
 
 function CreateFamily() {
   const navigate = useNavigate()
+  const storedFamily = getFamilyStorage()
   const [isMemberModalOpen, setIsMemberModalOpen] = useState(false)
-  const [members, setMembers] = useState<FamilyMember[]>([])
+  const [members, setMembers] = useState<FamilyMember[]>(
+    storedFamily?.members ?? []
+  )
   const [memberFirstName, setMemberFirstName] = useState('')
   const [memberAge, setMemberAge] = useState('')
   const [memberRole, setMemberRole] = useState('')
-  const [familyName, setFamilyName] = useState('')
+  const [familyName, setFamilyName] = useState(storedFamily?.familyName ?? '')
   const [isRosterConfirmed, setIsRosterConfirmed] = useState(false)
+
+  useEffect(() => {
+    saveFamilyStorage({
+      familyName: familyName.trim(),
+      members,
+    })
+  }, [familyName, members])
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -54,12 +69,23 @@ function CreateFamily() {
     }
 
     setIsRosterConfirmed(true)
+    saveFamilyStorage({
+      familyName: familyName.trim(),
+      members,
+    })
     navigate('/family-profile', {
       state: {
         familyName: familyName.trim(),
         members,
       },
     })
+  }
+
+  const handleResetRoster = () => {
+    clearFamilyStorage()
+    setFamilyName('')
+    setMembers([])
+    setIsRosterConfirmed(false)
   }
 
   return (
@@ -102,6 +128,9 @@ function CreateFamily() {
               Confirm family roster
             </button>
           </div>
+          <button type="button" onClick={handleResetRoster}>
+            Reset Family Roster
+          </button>
           {isRosterConfirmed ? (
             <div className="roster-confirmation" role="status">
               Roster confirmed. You can edit this later.

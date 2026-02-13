@@ -7,6 +7,15 @@ function About() {
         medications in one place.
       </p>
       <p>More features are on the way.</p>
+      <p>
+        <a
+          href="https://rohanrobinson.io"
+          target="_blank"
+          rel="noreferrer"
+        >
+         A Rohan Robinson production.
+        </a>
+      </p>
     </div>
   )
 }

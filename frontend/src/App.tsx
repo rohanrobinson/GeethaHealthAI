@@ -4,6 +4,7 @@ import './App.css'
 import About from './About.tsx'
 import CreateFamily from './CreateFamily.tsx'
 import FamilyProfile from './FamilyProfile.tsx'
+import MemberProfile from './MemberProfile.tsx'
 
 function Navbar() {
   return (
@@ -89,6 +90,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/create-family" element={<CreateFamily />} />
         <Route path="/family-profile" element={<FamilyProfile />} />
+        <Route path="/member-profile/:memberId" element={<MemberProfile />} />
         <Route path="/about" element={<About />} />
       </Routes>
     </>

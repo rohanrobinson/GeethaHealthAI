@@ -15,8 +15,8 @@
   gap: 1.5rem;
   padding: 0.75rem 1rem;
   margin-bottom: 1.25rem;
-  background: #f6f7fb;
-  color: #111;
+  background: var(--surface);
+  color: var(--text);
   text-align: left;
   border: none;
   border-radius: 12px;
@@ -33,7 +33,7 @@
 }
 
 .navbar-brand:hover {
-  color: #1f2937;
+  color: var(--brand-primary-dark);
 }
 
 .navbar-links {
@@ -50,7 +50,7 @@
 }
 
 .navbar-links a:hover {
-  color: #1f2937;
+  color: var(--brand-primary-dark);
 }
 
 .logo {
@@ -60,10 +60,10 @@
   transition: filter 300ms;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em rgba(47, 143, 157, 0.45));
 }
 .logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  filter: drop-shadow(0 0 2em rgba(56, 189, 248, 0.5));
 }
 
 @keyframes logo-spin {
@@ -100,8 +100,8 @@
 }
 
 .modal {
-  background: #fff;
-  color: #111;
+  background: var(--surface);
+  color: var(--text);
   width: min(420px, 100%);
   border-radius: 12px;
   padding: 1.25rem;
@@ -141,14 +141,24 @@
 
 .field input {
   padding: 0.6rem 0.75rem;
-  border: 1px solid #d0d5dd;
+  border: 1px solid var(--border);
   border-radius: 8px;
   font-size: 0.95rem;
+  background: var(--surface);
+  color: var(--text);
 }
 
 .primary {
   margin-top: 0.5rem;
   width: 100%;
+  background: var(--brand-primary);
+  border-color: var(--brand-primary);
+  color: #ffffff;
+}
+
+.primary:hover {
+  background: var(--brand-primary-dark);
+  border-color: var(--brand-primary-dark);
 }
 
 .member-roster {
@@ -169,8 +179,23 @@
 .member-card {
   border-radius: 12px;
   padding: 1rem;
-  background: #ffffff;
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.member-card--clickable {
+  cursor: pointer;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.member-card--clickable:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(15, 23, 42, 0.12);
+}
+
+.member-card--clickable:focus-visible {
+  outline: 3px solid rgba(47, 143, 157, 0.35);
+  outline-offset: 3px;
 }
 
 .member-card h3 {
@@ -215,12 +240,12 @@
 
 .profile-subtitle {
   margin: 0.35rem 0 0;
-  color: #475569;
+  color: var(--text-muted);
 }
 
 .profile-badge {
-  background: #e2e8f0;
-  color: #1f2937;
+  background: var(--brand-accent);
+  color: var(--text);
   border-radius: 999px;
   padding: 0.35rem 0.75rem;
   font-size: 0.85rem;
