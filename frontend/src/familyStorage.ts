@@ -1,8 +1,34 @@
-type FamilyMember = {
+export type Condition = {
+  id: string
+  name: string
+  notes?: string
+}
+
+export type Medication = {
+  id: string
+  name: string
+  dosage?: string
+  frequency?: string
+  notes?: string
+}
+
+export type Appointment = {
+  id: string
+  description: string
+  date: string
+  time?: string
+  location?: string
+  notes?: string
+}
+
+export type FamilyMember = {
   id: string
   firstName: string
   age: string
   role: string
+  conditions?: Condition[]
+  medications?: Medication[]
+  appointments?: Appointment[]
 }
 
 type FamilyStorage = {
@@ -17,6 +43,9 @@ const normalizeMember = (member: FamilyMember): FamilyMember => ({
   firstName: member.firstName,
   age: member.age ?? '',
   role: member.role ?? '',
+  conditions: Array.isArray(member.conditions) ? member.conditions : [],
+  medications: Array.isArray(member.medications) ? member.medications : [],
+  appointments: Array.isArray(member.appointments) ? member.appointments : [],
 })
 
 const isValidMember = (value: unknown): value is FamilyMember => {

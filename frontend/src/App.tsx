@@ -13,10 +13,20 @@ function Navbar() {
         Geetha Health
       </Link>
       <nav className="navbar-links" aria-label="Primary">
-        <span>My Account</span>
-        <Link to="/about">
-          About
-        </Link>
+        <div className="navbar-dropdown">
+          <span className="navbar-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+            My Account
+          </span>
+          <div className="navbar-dropdown-menu" role="menu">
+            <Link to="/family-profile" role="menuitem" className="navbar-dropdown-item">
+              Family Profile
+            </Link>
+            <Link to="/documents" role="menuitem" className="navbar-dropdown-item">
+              Documents
+            </Link>
+          </div>
+        </div>
+        <Link to="/about">About</Link>
       </nav>
     </header>
   )
@@ -37,7 +47,7 @@ function Home() {
       <h1>Stay on top of your Family's Healthcare</h1>
       <h2>Track medications, appointments, and conditions for everyone you love.</h2>
       <div className="card">
-        <button onClick={() => setIsLoginOpen(true)}>Get Started</button>
+        <button onClick={() => navigate('/create-family')}>Get Started</button>
       </div>
 
       {isLoginOpen ? (
@@ -92,6 +102,7 @@ function App() {
         <Route path="/family-profile" element={<FamilyProfile />} />
         <Route path="/member-profile/:memberId" element={<MemberProfile />} />
         <Route path="/about" element={<About />} />
+        <Route path="/documents" element={<div className="card"><h1>Documents</h1><p>Your documents will appear here.</p></div>} />
       </Routes>
     </>
   )
