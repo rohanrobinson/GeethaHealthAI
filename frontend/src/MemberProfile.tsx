@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { Tabs } from '@mantine/core'
 import {
@@ -16,6 +16,28 @@ type MemberProfileState = {
 }
 
 type AddResourceModal = 'condition' | 'medication' | 'appointment' | null
+
+function EditIcon({ size = 18, title = 'Edit' }: { size?: number; title?: string }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      role="img"
+      aria-label={title}
+    >
+      <title>{title}</title>
+      <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z" />
+      <path d="m15 5 4 4" />
+    </svg>
+  )
+}
 
 function MemberProfile() {
   const navigate = useNavigate()
@@ -66,6 +88,25 @@ function MemberProfile() {
   const [appointmentLocation, setAppointmentLocation] = useState('')
   const [appointmentNotes, setAppointmentNotes] = useState('')
 
+  const [conditions, setConditions] = useState<Condition[]>(() => member?.conditions ?? [])
+  const [medications, setMedications] = useState<Medication[]>(() => member?.medications ?? [])
+  const [appointments, setAppointments] = useState<Appointment[]>(() => member?.appointments ?? [])
+
+  const [editingBasics, setEditingBasics] = useState(false)
+  const [editingConditionId, setEditingConditionId] = useState<string | null>(null)
+  const [editingMedicationId, setEditingMedicationId] = useState<string | null>(null)
+  const [editingAppointmentId, setEditingAppointmentId] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (member) {
+      setConditions(member.conditions ?? [])
+      setMedications(member.medications ?? [])
+      setAppointments(member.appointments ?? [])
+    }
+  // Sync editable lists when switching to a different member
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- only when member identity changes
+  }, [member?.id])
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     if (!memberId) return
@@ -73,6 +114,9 @@ function MemberProfile() {
       firstName: firstName.trim(),
       age: age.trim(),
       role: role.trim(),
+      conditions,
+      medications,
+      appointments,
     })
     if (updated) {
       setFamilyData({ familyName: updated.familyName, members: updated.members })
@@ -108,10 +152,11 @@ function MemberProfile() {
       notes: conditionNotes.trim() || undefined,
     }
     const updated = updateMemberStorage(memberId, {
-      conditions: [...(member.conditions ?? []), newCondition],
+      conditions: [...conditions, newCondition],
     })
     if (updated) {
       setFamilyData({ familyName: updated.familyName, members: updated.members })
+      setConditions((prev) => [...prev, newCondition])
       closeAddModal()
     }
   }
@@ -129,10 +174,11 @@ function MemberProfile() {
       notes: medicationNotes.trim() || undefined,
     }
     const updated = updateMemberStorage(memberId, {
-      medications: [...(member.medications ?? []), newMedication],
+      medications: [...medications, newMedication],
     })
     if (updated) {
       setFamilyData({ familyName: updated.familyName, members: updated.members })
+      setMedications((prev) => [...prev, newMedication])
       closeAddModal()
     }
   }
@@ -153,12 +199,38 @@ function MemberProfile() {
       notes: appointmentNotes.trim() || undefined,
     }
     const updated = updateMemberStorage(memberId, {
-      appointments: [...(member.appointments ?? []), newAppointment],
+      appointments: [...appointments, newAppointment],
     })
     if (updated) {
       setFamilyData({ familyName: updated.familyName, members: updated.members })
+      setAppointments((prev) => [...prev, newAppointment])
       closeAddModal()
     }
+  }
+
+  const updateCondition = (id: string, patch: Partial<Condition>) => {
+    setConditions((prev) =>
+      prev.map((c) => (c.id === id ? { ...c, ...patch } : c))
+    )
+  }
+  const removeCondition = (id: string) => {
+    setConditions((prev) => prev.filter((c) => c.id !== id))
+  }
+  const updateMedication = (id: string, patch: Partial<Medication>) => {
+    setMedications((prev) =>
+      prev.map((m) => (m.id === id ? { ...m, ...patch } : m))
+    )
+  }
+  const removeMedication = (id: string) => {
+    setMedications((prev) => prev.filter((m) => m.id !== id))
+  }
+  const updateAppointment = (id: string, patch: Partial<Appointment>) => {
+    setAppointments((prev) =>
+      prev.map((a) => (a.id === id ? { ...a, ...patch } : a))
+    )
+  }
+  const removeAppointment = (id: string) => {
+    setAppointments((prev) => prev.filter((a) => a.id !== id))
   }
 
   if (!member) {
@@ -206,42 +278,122 @@ function MemberProfile() {
           </Tabs.List>
 
           <Tabs.Panel value="basics" pt="md">
-            <label className="field">
-              First name
-              <input
-                type="text"
-                value={firstName}
-                onChange={(event) => setFirstName(event.target.value)}
-              />
-            </label>
-            <label className="field">
-              Age
-              <input
-                type="text"
-                value={age}
-                onChange={(event) => setAge(event.target.value)}
-              />
-            </label>
-            <label className="field">
-              Role
-              <input
-                type="text"
-                value={role}
-                onChange={(event) => setRole(event.target.value)}
-              />
-            </label>
+            <div className="profile-section">
+              {editingBasics ? (
+                <>
+                  <label className="field">
+                    First name
+                    <input
+                      type="text"
+                      value={firstName}
+                      onChange={(event) => setFirstName(event.target.value)}
+                    />
+                  </label>
+                  <label className="field">
+                    Age
+                    <input
+                      type="text"
+                      value={age}
+                      onChange={(event) => setAge(event.target.value)}
+                    />
+                  </label>
+                  <label className="field">
+                    Role
+                    <input
+                      type="text"
+                      value={role}
+                      onChange={(event) => setRole(event.target.value)}
+                    />
+                  </label>
+                  <button
+                    type="button"
+                    className="profile-done-btn"
+                    onClick={() => setEditingBasics(false)}
+                  >
+                    Done
+                  </button>
+                </>
+              ) : (
+                <div className="profile-view-row">
+                  <dl className="profile-view-dl">
+                    <dt>First name</dt>
+                    <dd>{firstName || '—'}</dd>
+                    <dt>Age</dt>
+                    <dd>{age || '—'}</dd>
+                    <dt>Role</dt>
+                    <dd>{role || '—'}</dd>
+                  </dl>
+                  <button
+                    type="button"
+                    className="profile-edit-icon-btn"
+                    onClick={() => setEditingBasics(true)}
+                    aria-label="Edit basic info"
+                  >
+                    <EditIcon />
+                  </button>
+                </div>
+              )}
+            </div>
           </Tabs.Panel>
 
           <Tabs.Panel value="conditions" pt="md">
-            {(member?.conditions?.length ?? 0) > 0 ? (
-              <ul className="profile-list">
-                {member!.conditions!.map((c) => (
-                  <li key={c.id}>
-                    <strong>{c.name}</strong>
-                    {c.notes ? ` — ${c.notes}` : null}
-                  </li>
-                ))}
-              </ul>
+            {conditions.length > 0 ? (
+              <div className="profile-edit-list">
+                {conditions.map((c) =>
+                  editingConditionId === c.id ? (
+                    <div key={c.id} className="profile-edit-item">
+                      <label className="field">
+                        Condition name
+                        <input
+                          type="text"
+                          value={c.name}
+                          onChange={(e) => updateCondition(c.id, { name: e.target.value })}
+                        />
+                      </label>
+                      <label className="field">
+                        Notes (optional)
+                        <input
+                          type="text"
+                          value={c.notes ?? ''}
+                          onChange={(e) => updateCondition(c.id, { notes: e.target.value || undefined })}
+                        />
+                      </label>
+                      <div className="profile-edit-item-actions">
+                        <button
+                          type="button"
+                          className="profile-done-btn"
+                          onClick={() => setEditingConditionId(null)}
+                        >
+                          Done
+                        </button>
+                        <button
+                          type="button"
+                          className="profile-remove-btn"
+                          onClick={() => { removeCondition(c.id); setEditingConditionId(null); }}
+                          aria-label="Remove condition"
+                        >
+                          Remove
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    <div key={c.id} className="profile-view-item">
+                      <div className="profile-view-item-content">
+                        <strong>{c.name}</strong>
+                        {c.notes ? <span className="profile-view-notes"> — {c.notes}</span> : null}
+                      </div>
+                      <button
+                        type="button"
+                        className="profile-edit-icon-btn"
+                        onClick={() => setEditingConditionId(c.id)}
+                        aria-label={`Edit ${c.name}`}
+                      >
+                        <EditIcon />
+                      </button>
+                    </div>
+                  )
+                )}
+              </div>
             ) : (
               <p className="profile-subtitle">No conditions added yet.</p>
             )}
@@ -255,17 +407,81 @@ function MemberProfile() {
           </Tabs.Panel>
 
           <Tabs.Panel value="medications" pt="md">
-            {(member?.medications?.length ?? 0) > 0 ? (
-              <ul className="profile-list">
-                {member!.medications!.map((m) => (
-                  <li key={m.id}>
-                    <strong>{m.name}</strong>
-                    {m.dosage ? ` — ${m.dosage}` : null}
-                    {m.frequency ? `, ${m.frequency}` : null}
-                    {m.notes ? ` — ${m.notes}` : null}
-                  </li>
-                ))}
-              </ul>
+            {medications.length > 0 ? (
+              <div className="profile-edit-list">
+                {medications.map((m) =>
+                  editingMedicationId === m.id ? (
+                    <div key={m.id} className="profile-edit-item">
+                      <label className="field">
+                        Medication name
+                        <input
+                          type="text"
+                          value={m.name}
+                          onChange={(e) => updateMedication(m.id, { name: e.target.value })}
+                        />
+                      </label>
+                      <label className="field">
+                        Dosage (optional)
+                        <input
+                          type="text"
+                          value={m.dosage ?? ''}
+                          onChange={(e) => updateMedication(m.id, { dosage: e.target.value || undefined })}
+                        />
+                      </label>
+                      <label className="field">
+                        Frequency (optional)
+                        <input
+                          type="text"
+                          value={m.frequency ?? ''}
+                          onChange={(e) => updateMedication(m.id, { frequency: e.target.value || undefined })}
+                        />
+                      </label>
+                      <label className="field">
+                        Notes (optional)
+                        <input
+                          type="text"
+                          value={m.notes ?? ''}
+                          onChange={(e) => updateMedication(m.id, { notes: e.target.value || undefined })}
+                        />
+                      </label>
+                      <div className="profile-edit-item-actions">
+                        <button
+                          type="button"
+                          className="profile-done-btn"
+                          onClick={() => setEditingMedicationId(null)}
+                        >
+                          Done
+                        </button>
+                        <button
+                          type="button"
+                          className="profile-remove-btn"
+                          onClick={() => { removeMedication(m.id); setEditingMedicationId(null); }}
+                          aria-label="Remove medication"
+                        >
+                          Remove
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    <div key={m.id} className="profile-view-item">
+                      <div className="profile-view-item-content">
+                        <strong>{m.name}</strong>
+                        {m.dosage ? <span> — {m.dosage}</span> : null}
+                        {m.frequency ? <span>, {m.frequency}</span> : null}
+                        {m.notes ? <span className="profile-view-notes"> — {m.notes}</span> : null}
+                      </div>
+                      <button
+                        type="button"
+                        className="profile-edit-icon-btn"
+                        onClick={() => setEditingMedicationId(m.id)}
+                        aria-label={`Edit ${m.name}`}
+                      >
+                        <EditIcon />
+                      </button>
+                    </div>
+                  )
+                )}
+              </div>
             ) : (
               <p className="profile-subtitle">No medications added yet.</p>
             )}
@@ -279,19 +495,90 @@ function MemberProfile() {
           </Tabs.Panel>
 
           <Tabs.Panel value="appointments" pt="md">
-            {(member?.appointments?.length ?? 0) > 0 ? (
-              <ul className="profile-list">
-                {member!.appointments!.map((a) => (
-                  <li key={a.id}>
-                    <strong>{a.description}</strong>
-                    {' — '}
-                    {a.date}
-                    {a.time ? ` at ${a.time}` : null}
-                    {a.location ? `, ${a.location}` : null}
-                    {a.notes ? ` — ${a.notes}` : null}
-                  </li>
-                ))}
-              </ul>
+            {appointments.length > 0 ? (
+              <div className="profile-edit-list">
+                {appointments.map((a) =>
+                  editingAppointmentId === a.id ? (
+                    <div key={a.id} className="profile-edit-item">
+                      <label className="field">
+                        Description / type
+                        <input
+                          type="text"
+                          value={a.description}
+                          onChange={(e) => updateAppointment(a.id, { description: e.target.value })}
+                        />
+                      </label>
+                      <label className="field">
+                        Date
+                        <input
+                          type="date"
+                          value={a.date}
+                          onChange={(e) => updateAppointment(a.id, { date: e.target.value })}
+                        />
+                      </label>
+                      <label className="field">
+                        Time (optional)
+                        <input
+                          type="time"
+                          value={a.time ?? ''}
+                          onChange={(e) => updateAppointment(a.id, { time: e.target.value || undefined })}
+                        />
+                      </label>
+                      <label className="field">
+                        Location (optional)
+                        <input
+                          type="text"
+                          value={a.location ?? ''}
+                          onChange={(e) => updateAppointment(a.id, { location: e.target.value || undefined })}
+                        />
+                      </label>
+                      <label className="field">
+                        Notes (optional)
+                        <input
+                          type="text"
+                          value={a.notes ?? ''}
+                          onChange={(e) => updateAppointment(a.id, { notes: e.target.value || undefined })}
+                        />
+                      </label>
+                      <div className="profile-edit-item-actions">
+                        <button
+                          type="button"
+                          className="profile-done-btn"
+                          onClick={() => setEditingAppointmentId(null)}
+                        >
+                          Done
+                        </button>
+                        <button
+                          type="button"
+                          className="profile-remove-btn"
+                          onClick={() => { removeAppointment(a.id); setEditingAppointmentId(null); }}
+                          aria-label="Remove appointment"
+                        >
+                          Remove
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    <div key={a.id} className="profile-view-item">
+                      <div className="profile-view-item-content">
+                        <strong>{a.description}</strong>
+                        {' — '}{a.date}
+                        {a.time ? ` at ${a.time}` : null}
+                        {a.location ? `, ${a.location}` : null}
+                        {a.notes ? <span className="profile-view-notes"> — {a.notes}</span> : null}
+                      </div>
+                      <button
+                        type="button"
+                        className="profile-edit-icon-btn"
+                        onClick={() => setEditingAppointmentId(a.id)}
+                        aria-label={`Edit ${a.description}`}
+                      >
+                        <EditIcon />
+                      </button>
+                    </div>
+                  )
+                )}
+              </div>
             ) : (
               <p className="profile-subtitle">No appointments scheduled yet.</p>
             )}
