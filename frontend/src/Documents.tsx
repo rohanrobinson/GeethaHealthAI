@@ -26,6 +26,16 @@ function Documents() {
   const [isUploadModalOpen, setIsUploadModalOpen] = useState(false)
   const [documentName, setDocumentName] = useState('')
   const [selectedMemberId, setSelectedMemberId] = useState('')
+  const bundledMedicalAssets = [
+    {
+      label: 'Healthcare sample',
+      path: '/medical/healthcare/clinic-visit-sample.png',
+    },
+    {
+      label: 'Report sample',
+      path: '/medical/reports/lab-result-sample.png',
+    },
+  ]
 
   const storedFamily = getFamilyStorage()
   const members = storedFamily?.members ?? []
@@ -52,6 +62,18 @@ function Documents() {
       >
         Upload Document
       </button>
+
+      <div className="card" style={{ marginTop: '1rem' }}>
+        <h3>Bundled asset paths</h3>
+        <p>Store demo images under the `/medical/...` public path:</p>
+        <ul>
+          {bundledMedicalAssets.map((asset) => (
+            <li key={asset.path}>
+              <strong>{asset.label}:</strong> <code>{asset.path}</code>
+            </li>
+          ))}
+        </ul>
+      </div>
 
       {isUploadModalOpen ? (
         <div

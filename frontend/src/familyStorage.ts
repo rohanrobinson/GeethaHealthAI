@@ -21,6 +21,18 @@ export type Appointment = {
   notes?: string
 }
 
+export type ReportLinkType = 'condition' | 'appointment'
+
+export type Report = {
+  id: string
+  title: string
+  filePath: string
+  linkType: ReportLinkType
+  linkedId: string
+  notes?: string
+  createdAt: string
+}
+
 export type FamilyMember = {
   id: string
   firstName: string
@@ -29,6 +41,7 @@ export type FamilyMember = {
   conditions?: Condition[]
   medications?: Medication[]
   appointments?: Appointment[]
+  reports?: Report[]
 }
 
 type FamilyStorage = {
@@ -46,6 +59,7 @@ const normalizeMember = (member: FamilyMember): FamilyMember => ({
   conditions: Array.isArray(member.conditions) ? member.conditions : [],
   medications: Array.isArray(member.medications) ? member.medications : [],
   appointments: Array.isArray(member.appointments) ? member.appointments : [],
+  reports: Array.isArray(member.reports) ? member.reports : [],
 })
 
 const isValidMember = (value: unknown): value is FamilyMember => {

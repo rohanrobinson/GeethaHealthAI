@@ -112,7 +112,31 @@ function CreateFamily() {
           <h2>{familyName ? `${familyName} ` : ''}Family</h2>
           <div className="member-grid">
             {members.map((member) => (
-              <article className="member-card" key={member.id}>
+              <article
+                className="member-card member-card--clickable"
+                key={member.id}
+                onClick={() =>
+                  navigate(`/member-profile/${member.id}`, {
+                    state: {
+                      familyName: familyName.trim(),
+                      members,
+                    },
+                  })
+                }
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault()
+                    navigate(`/member-profile/${member.id}`, {
+                      state: {
+                        familyName: familyName.trim(),
+                        members,
+                      },
+                    })
+                  }
+                }}
+                role="button"
+                tabIndex={0}
+              >
                 <h3>{member.firstName}</h3>
                 {member.age ? <p>Age: {member.age}</p> : null}
                 {member.role ? <p>Role: {member.role}</p> : null}

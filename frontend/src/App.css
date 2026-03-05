@@ -321,6 +321,21 @@
   margin-top: 0;
 }
 
+.primary.profile-add-report-btn {
+  width: auto;
+  margin-top: 0;
+  padding: 0.45rem 0.7rem;
+  font-size: 0.9rem;
+  background: var(--brand-primary);
+  border-color: var(--brand-primary);
+  color: #ffffff;
+}
+
+.primary.profile-add-report-btn:hover {
+  background: var(--brand-primary-dark);
+  border-color: var(--brand-primary-dark);
+}
+
 .profile-list {
   list-style: none;
   padding: 0;
@@ -419,6 +434,12 @@
   background: var(--brand-accent, rgba(47, 143, 157, 0.08));
 }
 
+.profile-delete-icon-btn:hover {
+  color: #b91c1c;
+  border-color: #b91c1c;
+  background: rgba(185, 28, 28, 0.08);
+}
+
 .profile-done-btn {
   margin-top: 0.25rem;
   padding: 0.4rem 0.75rem;
@@ -451,8 +472,33 @@
   min-width: 0;
 }
 
+.profile-view-item-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .profile-view-notes {
   color: var(--text-muted);
+}
+
+.profile-report-view-btn {
+  margin-top: 0.35rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--brand-primary-dark);
+}
+
+.profile-report-view-btn:hover {
+  border-color: var(--brand-primary);
+  background: var(--brand-accent, rgba(47, 143, 157, 0.08));
 }
 
 .profile-edit-item-actions {
@@ -487,4 +533,56 @@
   color: var(--text-muted);
   font-size: 0.9rem;
   cursor: default;
+}
+
+.modal.modal-report-view {
+  width: min(760px, 100%);
+}
+
+.modal.modal-report-view.modal-report-view--analyzed {
+  width: min(1080px, 100%);
+}
+
+.modal-backdrop--report-view {
+  align-items: flex-start;
+  padding-top: 5.25rem;
+}
+
+.report-view-layout {
+  display: block;
+}
+
+.report-view-layout.report-view-layout--analyzed {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.9fr);
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.report-preview-image {
+  width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-muted);
+}
+
+.report-analysis-panel {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-muted);
+  padding: 0.9rem 1rem;
+  text-align: left;
+}
+
+.report-analysis-panel h4 {
+  margin: 0 0 0.6rem;
+}
+
+.report-analysis-list {
+  margin: 0.4rem 0 0.75rem;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.35rem;
 }
