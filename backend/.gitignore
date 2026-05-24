@@ -1,5 +1,25 @@
-node_modules
-# Keep environment variables out of version control
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+dist/
+*.egg-info/
+
+# Environment
 .env
 
-/generated/prisma
+# Local databases
+*.db
+
+# Node (legacy — no longer used)
+node_modules/
+package-lock.json
+package.json
+prisma.config.ts
+tsconfig.json
+
+# Misc
+.DS_Store
