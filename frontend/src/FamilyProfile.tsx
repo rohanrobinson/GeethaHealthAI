@@ -1,12 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom'
-import { getFamilyStorage } from './familyStorage.ts'
-
-type FamilyMember = {
-  id: string
-  firstName: string
-  age: string
-  role: string
-}
+import FamilyAncestryGraph from './FamilyAncestryGraph.tsx'
+import { getFamilyStorage, type FamilyMember } from './familyStorage.ts'
 
 type FamilyProfileState = {
   familyName?: string
@@ -22,6 +16,15 @@ function FamilyProfile() {
   const familyName = state?.familyName ?? storedFamily?.familyName ?? ''
   const familyLabel = familyName ? `${familyName} Family` : 'Family'
 
+  const openMemberProfile = (member: FamilyMember) => {
+    navigate(`/member-profile/${member.id}`, {
+      state: {
+        familyName,
+        members,
+      },
+    })
+  }
+
   return (
     <div className="card profile-card">
       <div className="profile-header">
@@ -32,28 +35,20 @@ function FamilyProfile() {
       </div>
 
       {members.length > 0 ? (
-        <div className="member-grid">
+        <>
+          <FamilyAncestryGraph members={members} onMemberClick={openMemberProfile} />
+
+          <h2 className="family-roster-heading">All members</h2>
+          <div className="member-grid">
           {members.map((member) => (
             <article
               className="member-card member-card--clickable"
               key={member.id}
-              onClick={() =>
-                navigate(`/member-profile/${member.id}`, {
-                  state: {
-                    familyName,
-                    members,
-                  },
-                })
-              }
+              onClick={() => openMemberProfile(member)}
               onKeyDown={(event) => {
                 if (event.key === 'Enter' || event.key === ' ') {
                   event.preventDefault()
-                  navigate(`/member-profile/${member.id}`, {
-                    state: {
-                      familyName,
-                      members,
-                    },
-                  })
+                  openMemberProfile(member)
                 }
               }}
               role="button"
@@ -64,7 +59,8 @@ function FamilyProfile() {
               {member.role ? <p>Role: {member.role}</p> : null}
             </article>
           ))}
-        </div>
+          </div>
+        </>
       ) : (
         <p className="profile-subtitle">
           No members have been added yet.

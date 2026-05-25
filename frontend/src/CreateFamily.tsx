@@ -1,17 +1,12 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import ParentPicker from './ParentPicker.tsx'
 import {
   clearFamilyStorage,
   getFamilyStorage,
   saveFamilyStorage,
+  type FamilyMember,
 } from './familyStorage.ts'
-
-type FamilyMember = {
-  id: string
-  firstName: string
-  age: string
-  role: string
-}
 
 function CreateFamily() {
   const navigate = useNavigate()
@@ -23,6 +18,7 @@ function CreateFamily() {
   const [memberFirstName, setMemberFirstName] = useState('')
   const [memberAge, setMemberAge] = useState('')
   const [memberRole, setMemberRole] = useState('')
+  const [memberParentIds, setMemberParentIds] = useState<string[]>([])
   const [familyName, setFamilyName] = useState(storedFamily?.familyName ?? '')
   const [isRosterConfirmed, setIsRosterConfirmed] = useState(false)
 
@@ -32,11 +28,6 @@ function CreateFamily() {
       members,
     })
   }, [familyName, members])
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    setIsMemberModalOpen(true)
-  }
 
   const handleAddMember = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -53,6 +44,7 @@ function CreateFamily() {
         firstName: trimmedName,
         age: memberAge.trim(),
         role: memberRole.trim(),
+        parentIds: memberParentIds,
       },
     ])
 
@@ -60,6 +52,7 @@ function CreateFamily() {
     setMemberFirstName('')
     setMemberAge('')
     setMemberRole('')
+    setMemberParentIds([])
     setIsMemberModalOpen(false)
   }
 
@@ -91,7 +84,14 @@ function CreateFamily() {
   return (
     <div className="card">
       <h1>Add Family Members</h1>
-      <form className="modal-body" onSubmit={handleSubmit}>
+      <form
+        className="modal-body"
+        onSubmit={(event) => {
+          event.preventDefault()
+          setMemberParentIds([])
+          setIsMemberModalOpen(true)
+        }}
+      >
         <label className="field">
           Family name
           <input
@@ -102,7 +102,7 @@ function CreateFamily() {
           />
         </label>
         <button type="submit" className="primary">
-          Add a Family Member 
+          Add a Family Member
         </button>
       </form>
       
@@ -214,6 +214,11 @@ function CreateFamily() {
                   placeholder="Father"
                 />
               </label>
+              <ParentPicker
+                members={members}
+                selectedIds={memberParentIds}
+                onChange={setMemberParentIds}
+              />
               <button type="submit" className="primary">
                 Add member
               </button>

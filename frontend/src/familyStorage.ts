@@ -38,6 +38,7 @@ export type FamilyMember = {
   firstName: string
   age: string
   role: string
+  parentIds?: string[]
   conditions?: Condition[]
   medications?: Medication[]
   appointments?: Appointment[]
@@ -51,11 +52,21 @@ type FamilyStorage = {
 
 const STORAGE_KEY = 'geetha-family'
 
+const normalizeParentIds = (value: unknown, memberId: string): string[] => {
+  if (!Array.isArray(value)) {
+    return []
+  }
+  return value.filter(
+    (id): id is string => typeof id === 'string' && id.length > 0 && id !== memberId
+  )
+}
+
 const normalizeMember = (member: FamilyMember): FamilyMember => ({
   id: member.id,
   firstName: member.firstName,
   age: member.age ?? '',
   role: member.role ?? '',
+  parentIds: normalizeParentIds(member.parentIds, member.id),
   conditions: Array.isArray(member.conditions) ? member.conditions : [],
   medications: Array.isArray(member.medications) ? member.medications : [],
   appointments: Array.isArray(member.appointments) ? member.appointments : [],
@@ -117,6 +128,19 @@ export const updateMemberStorage = (
   const updated = { ...current, members }
   saveFamilyStorage(updated)
   return updated
+}
+
+export const formatParentNames = (
+  parentIds: string[] | undefined,
+  members: FamilyMember[]
+): string => {
+  if (!parentIds?.length) {
+    return ''
+  }
+  const names = parentIds
+    .map((id) => members.find((member) => member.id === id)?.firstName)
+    .filter((name): name is string => Boolean(name))
+  return names.length > 0 ? names.join(', ') : ''
 }
 
 export const clearFamilyStorage = () => {

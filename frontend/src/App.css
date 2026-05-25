@@ -284,6 +284,181 @@
   text-align: left;
 }
 
+.family-roster-heading {
+  margin: 2rem 0 1rem;
+  font-size: 1.15rem;
+}
+
+.ancestry-graph {
+  margin-bottom: 1.5rem;
+}
+
+.ancestry-graph__header h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.15rem;
+}
+
+.ancestry-graph__hint {
+  margin: 0 0 1rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.ancestry-graph__canvas {
+  position: relative;
+  overflow-x: auto;
+  padding: 1rem 0.5rem 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(47, 143, 157, 0.04), transparent 55%);
+}
+
+.ancestry-graph__svg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.ancestry-graph__connector {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ancestry-graph__connector--couple {
+  stroke: rgba(47, 143, 157, 0.55);
+}
+
+.ancestry-graph__connector--parent-child {
+  stroke: rgba(15, 23, 42, 0.22);
+}
+
+.ancestry-graph__tiers {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  min-width: min(100%, 520px);
+}
+
+.ancestry-graph__tier {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ancestry-graph__tier-label {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.ancestry-graph__nodes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.85rem;
+}
+
+.ancestry-graph__node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  min-width: 7.5rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  text-align: center;
+  transition: transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease;
+}
+
+.ancestry-graph__node:hover {
+  transform: translateY(-2px);
+  border-color: rgba(47, 143, 157, 0.45);
+  box-shadow: 0 12px 26px rgba(15, 23, 42, 0.12);
+}
+
+.ancestry-graph__node:focus-visible {
+  outline: 3px solid rgba(47, 143, 157, 0.35);
+  outline-offset: 3px;
+}
+
+.ancestry-graph__node-name {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.ancestry-graph__node-meta,
+.ancestry-graph__node-role {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.ancestry-graph__node-role {
+  color: var(--brand-primary-dark);
+}
+
+.parent-picker {
+  margin: 0;
+  padding: 0;
+  border: none;
+  text-align: left;
+}
+
+.parent-picker__label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.parent-picker__hint {
+  margin: 0 0 0.65rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.parent-picker__options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.parent-picker__option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  cursor: pointer;
+}
+
+.parent-picker__option--disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.parent-picker__option-text {
+  font-size: 0.92rem;
+}
+
+.parent-picker--empty .parent-picker__hint {
+  margin-bottom: 0;
+}
+
 .profile-header {
   display: flex;
   align-items: flex-start;

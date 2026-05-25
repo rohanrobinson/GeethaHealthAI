@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { Tabs } from '@mantine/core'
 import { recognize } from 'tesseract.js'
+import ParentPicker from './ParentPicker.tsx'
 import {
   type Condition,
   type FamilyMember,
@@ -9,6 +10,7 @@ import {
   type Appointment,
   type Report,
   type ReportLinkType,
+  formatParentNames,
   getFamilyStorage,
   updateMemberStorage,
 } from './familyStorage.ts'
@@ -141,6 +143,7 @@ function MemberProfile() {
   const [firstName, setFirstName] = useState(member?.firstName ?? '')
   const [age, setAge] = useState(member?.age ?? '')
   const [role, setRole] = useState(member?.role ?? '')
+  const [parentIds, setParentIds] = useState<string[]>(member?.parentIds ?? [])
 
   const familyName = familyData.familyName
   const familyLabel = familyName ? `${familyName} Family` : 'Family'
@@ -178,14 +181,21 @@ function MemberProfile() {
 
   useEffect(() => {
     if (member) {
+      setFirstName(member.firstName)
+      setAge(member.age ?? '')
+      setRole(member.role ?? '')
+      setParentIds(member.parentIds ?? [])
       setConditions(member.conditions ?? [])
       setMedications(member.medications ?? [])
       setAppointments(member.appointments ?? [])
       setReports(member.reports ?? [])
+      setEditingBasics(false)
     }
-  // Sync editable lists when switching to a different member
+  // Sync editable fields when switching to a different member
   // eslint-disable-next-line react-hooks/exhaustive-deps -- only when member identity changes
   }, [member?.id])
+
+  const parentLabel = formatParentNames(parentIds, members)
 
   const selectedLinkOptions = reportLinkType === 'condition' ? conditions : appointments
 
@@ -196,6 +206,7 @@ function MemberProfile() {
       firstName: firstName.trim(),
       age: age.trim(),
       role: role.trim(),
+      parentIds,
       conditions,
       medications,
       appointments,
@@ -572,6 +583,12 @@ function MemberProfile() {
                       onChange={(event) => setRole(event.target.value)}
                     />
                   </label>
+                  <ParentPicker
+                    members={members}
+                    selectedIds={parentIds}
+                    excludeMemberId={memberId}
+                    onChange={setParentIds}
+                  />
                   <button
                     type="button"
                     className="profile-done-btn"
@@ -589,6 +606,8 @@ function MemberProfile() {
                     <dd>{age || '—'}</dd>
                     <dt>Role</dt>
                     <dd>{role || '—'}</dd>
+                    <dt>Parents</dt>
+                    <dd>{parentLabel || '—'}</dd>
                   </dl>
                   <button
                     type="button"
