@@ -3,6 +3,7 @@ import SwiftData
 
 struct RecordsHomeView: View {
     var profile: Profile
+    @State private var sharedSummary: SharedFile?
 
     var body: some View {
         NavigationStack {
@@ -44,6 +45,25 @@ struct RecordsHomeView: View {
                 }
             }
             .navigationTitle("Records")
+            .toolbar {
+                Button {
+                    if let url = PDFExporter.makeSummaryPDF(for: profile) {
+                        sharedSummary = SharedFile(url: url)
+                    }
+                } label: {
+                    VStack(spacing: 1) {
+                        Image(systemName: "square.and.arrow.up")
+                            .font(.system(size: 15, weight: .medium))
+                        Text("Share")
+                            .font(.system(size: 9))
+                    }
+                }
+                .accessibilityLabel("Share summary")
+            }
+            .sheet(item: $sharedSummary) { file in
+                ShareSheet(url: file.url)
+                    .presentationDetents([.medium, .large])
+            }
         }
     }
 
