@@ -695,19 +695,60 @@
   margin-top: 0;
 }
 
+.upload-file-input {
+  display: none;
+}
+
 .upload-attachment-placeholder {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  width: 100%;
   padding: 1.25rem;
+  border: 0;
   border: 1px dashed var(--border);
   border-radius: 8px;
   background: var(--surface);
   color: var(--text-muted);
   font-size: 0.9rem;
-  cursor: default;
+  cursor: pointer;
+}
+
+.upload-attachment-placeholder:hover {
+  border-color: var(--brand-primary);
+  color: var(--brand-primary-dark);
+}
+
+.documents-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.documents-list-item {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.documents-list-name {
+  font-weight: 500;
+}
+
+.documents-list-member,
+.documents-list-date {
+  color: var(--text-muted);
+  font-size: 0.9rem;
 }
 
 .modal.modal-report-view {
