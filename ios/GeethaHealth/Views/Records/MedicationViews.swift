@@ -69,20 +69,65 @@ struct MedicationFormView: View {
     @State private var frequencyText = ""
     @State private var status = "active"
     @State private var notes = ""
+    @State private var code: String?
+    @State private var codeSystem: String?
+    @State private var suggestions: [DrugEntry] = []
+    @State private var selectedDrug: DrugEntry?
+    // Name whose code we already hold (picked suggestion or loaded record);
+    // searching resumes only when the user edits away from it.
+    @State private var acceptedName: String?
 
     private let statusOptions = ["active", "completed", "stopped"]
 
     var body: some View {
         NavigationStack {
             Form {
-                TextField("Medication name", text: $name)
-                TextField("Dosage (e.g. 10 mg)", text: $dosageText)
+                Section {
+                    TextField("Medication name", text: $name)
+                        .autocorrectionDisabled()
+                    ForEach(suggestions) { drug in
+                        Button {
+                            select(drug)
+                        } label: {
+                            Text(drug.displayName)
+                                .font(.subheadline)
+                                .foregroundStyle(.tint)
+                        }
+                    }
+                }
+                if let drug = selectedDrug, !drug.strengths.isEmpty {
+                    Picker("Strength", selection: $dosageText) {
+                        Text("Not set").tag("")
+                        ForEach(drug.strengths, id: \.self) { strength in
+                            Text(strength.label).tag(strength.label)
+                        }
+                    }
+                } else {
+                    TextField("Dosage (e.g. 10 mg)", text: $dosageText)
+                }
                 TextField("Frequency (e.g. once daily)", text: $frequencyText)
                 Picker("Status", selection: $status) {
                     ForEach(statusOptions, id: \.self) { Text($0.capitalized) }
                 }
                 TextField("Notes", text: $notes, axis: .vertical)
                     .lineLimit(3...6)
+            }
+            .task(id: name) {
+                let query = name.trimmingCharacters(in: .whitespaces)
+                if query.count < 2 || query == acceptedName {
+                    suggestions = []
+                    return
+                }
+                selectedDrug = nil
+                code = nil
+                codeSystem = nil
+                suggestions = await VocabularyStore.shared.searchDrugs(query, limit: 8)
+            }
+            .onChange(of: dosageText) {
+                if let drug = selectedDrug,
+                   let strength = drug.strengths.first(where: { $0.label == dosageText }) {
+                    code = strength.rxcui
+                }
             }
             .navigationTitle(existing == nil ? "Add medication" : "Edit medication")
             .navigationBarTitleDisplayMode(.inline)
@@ -99,13 +144,25 @@ struct MedicationFormView: View {
         }
     }
 
+    private func select(_ drug: DrugEntry) {
+        selectedDrug = drug
+        acceptedName = drug.displayName
+        name = drug.displayName
+        code = drug.c
+        codeSystem = "http://www.nlm.nih.gov/research/umls/rxnorm"
+        suggestions = []
+    }
+
     private func load() {
         guard let existing else { return }
+        acceptedName = existing.name
         name = existing.name
         dosageText = existing.dosageText ?? ""
         frequencyText = existing.frequencyText ?? ""
         status = existing.status
         notes = existing.notes ?? ""
+        code = existing.code
+        codeSystem = existing.codeSystem
     }
 
     private func save() {
@@ -116,13 +173,17 @@ struct MedicationFormView: View {
             existing.frequencyText = frequencyText.isEmpty ? nil : frequencyText
             existing.status = status
             existing.notes = notes.isEmpty ? nil : notes
+            existing.code = code
+            existing.codeSystem = codeSystem
         } else {
             let medication = Medication(
                 name: trimmedName,
                 dosageText: dosageText.isEmpty ? nil : dosageText,
                 frequencyText: frequencyText.isEmpty ? nil : frequencyText,
                 status: status,
-                notes: notes.isEmpty ? nil : notes
+                notes: notes.isEmpty ? nil : notes,
+                code: code,
+                codeSystem: codeSystem
             )
             medication.profile = profile
             context.insert(medication)
