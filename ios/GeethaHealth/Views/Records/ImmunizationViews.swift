@@ -63,17 +63,50 @@ struct ImmunizationFormView: View {
     @State private var hasDate = false
     @State private var administeredDate = Date()
     @State private var notes = ""
+    @State private var code: String?
+    @State private var codeSystem: String?
+    @State private var suggestions: [VaccineEntry] = []
+    // Name whose code we already hold (picked suggestion or loaded record);
+    // searching resumes only when the user edits away from it.
+    @State private var acceptedName: String?
 
     var body: some View {
         NavigationStack {
             Form {
-                TextField("Vaccine (e.g. Influenza)", text: $name)
+                Section {
+                    TextField("Vaccine (e.g. Influenza)", text: $name)
+                        .autocorrectionDisabled()
+                    ForEach(suggestions) { vaccine in
+                        Button {
+                            select(vaccine)
+                        } label: {
+                            VStack(alignment: .leading, spacing: 1) {
+                                Text(vaccine.displayName)
+                                    .font(.subheadline)
+                                    .foregroundStyle(.tint)
+                                Text(vaccine.fullName)
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
+                    }
+                }
                 Toggle("Date received", isOn: $hasDate.animation())
                 if hasDate {
                     DatePicker("Received", selection: $administeredDate, in: ...Date(), displayedComponents: .date)
                 }
                 TextField("Notes", text: $notes, axis: .vertical)
                     .lineLimit(3...6)
+            }
+            .task(id: name) {
+                let query = name.trimmingCharacters(in: .whitespaces)
+                if query.count < 2 || query == acceptedName {
+                    suggestions = []
+                    return
+                }
+                code = nil
+                codeSystem = nil
+                suggestions = await VocabularyStore.shared.searchVaccines(query, limit: 8)
             }
             .navigationTitle(existing == nil ? "Add immunization" : "Edit immunization")
             .navigationBarTitleDisplayMode(.inline)
@@ -90,12 +123,23 @@ struct ImmunizationFormView: View {
         }
     }
 
+    private func select(_ vaccine: VaccineEntry) {
+        acceptedName = vaccine.displayName
+        name = vaccine.displayName
+        code = vaccine.cvxCode
+        codeSystem = "http://hl7.org/fhir/sid/cvx"
+        suggestions = []
+    }
+
     private func load() {
         guard let existing else { return }
+        acceptedName = existing.name
         name = existing.name
         hasDate = existing.administeredDate != nil
         administeredDate = existing.administeredDate ?? Date()
         notes = existing.notes ?? ""
+        code = existing.code
+        codeSystem = existing.codeSystem
     }
 
     private func save() {
@@ -104,11 +148,15 @@ struct ImmunizationFormView: View {
             existing.name = trimmedName
             existing.administeredDate = hasDate ? administeredDate : nil
             existing.notes = notes.isEmpty ? nil : notes
+            existing.code = code
+            existing.codeSystem = codeSystem
         } else {
             let immunization = Immunization(
                 name: trimmedName,
                 administeredDate: hasDate ? administeredDate : nil,
-                notes: notes.isEmpty ? nil : notes
+                notes: notes.isEmpty ? nil : notes,
+                code: code,
+                codeSystem: codeSystem
             )
             immunization.profile = profile
             context.insert(immunization)

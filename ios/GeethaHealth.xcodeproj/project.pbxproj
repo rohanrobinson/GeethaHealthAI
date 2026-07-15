@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02E866D9C7F5FB0189F10402 /* VocabularyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1E76F30514F1CD79816D56 /* VocabularyStore.swift */; };
 		223C255725A44407925EE725 /* PDFExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484163C16BE36FDE84C7DBC4 /* PDFExporter.swift */; };
 		300316A57406CEAD51C313D6 /* ImmunizationViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CBC559C5FD3DCFCFAD6333 /* ImmunizationViews.swift */; };
 		31C3D111972454E945B92452 /* ConditionViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71C25E6BD852A0A8C43EB7F /* ConditionViews.swift */; };
 		349E112D9416915EACE26CF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F22DFA743C732E899DCC4284 /* Assets.xcassets */; };
+		4B6BF9141E4EDAA72A46699D /* vaccines.json in Resources */ = {isa = PBXBuildFile; fileRef = 9DE313E8C50DEEDDF82F4C07 /* vaccines.json */; };
 		4F5B0011208262C3C2CB2832 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD8595A6C95F1041E3C57D /* Profile.swift */; };
 		504D55535958FBE40ADF58D7 /* Immunization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFBE5FF4780B112998B6F4D /* Immunization.swift */; };
 		676816A04F62CA3B6B8C111F /* RecordsHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993126121FABC2254AA9562D /* RecordsHomeView.swift */; };
@@ -27,6 +29,7 @@
 		BF1449DC2C61D8C9EE584B10 /* DocumentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD5EA8744453A4ECB67DF0 /* DocumentsView.swift */; };
 		D230CCB0F0A4953E1981552A /* MedicationViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADE6A1E4A1F3D3EC136495F /* MedicationViews.swift */; };
 		E5173D67C0494FB5AE1F0321 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F177A5592AA81F3CD5DA34B /* OnboardingView.swift */; };
+		F0FAF35A92DDB2DBF28A0766 /* medications.json in Resources */ = {isa = PBXBuildFile; fileRef = 1A3756591E4CDBA9BCE980D8 /* medications.json */; };
 		F1C74A0525E93FD1ECF5DF0B /* Medication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D3790E7AB7389013F8BE16 /* Medication.swift */; };
 		FF1BC7004EA091437BA1F014 /* SummaryPDFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244CFAC6CB30C469521D3FC7 /* SummaryPDFView.swift */; };
 /* End PBXBuildFile section */
@@ -35,6 +38,7 @@
 		02CBC559C5FD3DCFCFAD6333 /* ImmunizationViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmunizationViews.swift; sourceTree = "<group>"; };
 		06221CACEA07FD54EC37C0CB /* Allergy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Allergy.swift; sourceTree = "<group>"; };
 		159685BA1612153F44C55D7F /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		1A3756591E4CDBA9BCE980D8 /* medications.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = medications.json; sourceTree = "<group>"; };
 		244CFAC6CB30C469521D3FC7 /* SummaryPDFView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryPDFView.swift; sourceTree = "<group>"; };
 		2A61AF6C1A787A1A32DADF16 /* Appointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
 		3F177A5592AA81F3CD5DA34B /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -45,10 +49,12 @@
 		901CCC84600AA1481611A21D /* AllergyViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergyViews.swift; sourceTree = "<group>"; };
 		960568D60E0A9D21DAD43D4B /* Condition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Condition.swift; sourceTree = "<group>"; };
 		993126121FABC2254AA9562D /* RecordsHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsHomeView.swift; sourceTree = "<group>"; };
+		9DE313E8C50DEEDDF82F4C07 /* vaccines.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = vaccines.json; sourceTree = "<group>"; };
 		A3A61748CEE4EA315A938EC1 /* MedicalDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalDocument.swift; sourceTree = "<group>"; };
 		A3C2A1AD7151AA511B39B196 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 		C71C25E6BD852A0A8C43EB7F /* ConditionViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionViews.swift; sourceTree = "<group>"; };
 		CA762C6598F2BA8EAF3D43AA /* GeethaHealthApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeethaHealthApp.swift; sourceTree = "<group>"; };
+		CD1E76F30514F1CD79816D56 /* VocabularyStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyStore.swift; sourceTree = "<group>"; };
 		D3EFFA7C6542744A0277FC05 /* GeethaHealth.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = GeethaHealth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E96F4951DB3BC4979CA2A9C8 /* AppointmentViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentViews.swift; sourceTree = "<group>"; };
 		EADD5EA8744453A4ECB67DF0 /* DocumentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsView.swift; sourceTree = "<group>"; };
@@ -70,6 +76,15 @@
 				7FFD8595A6C95F1041E3C57D /* Profile.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		0B48CD511A727820113B2F33 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1A3756591E4CDBA9BCE980D8 /* medications.json */,
+				9DE313E8C50DEEDDF82F4C07 /* vaccines.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		38730BF383E2185B43B2C9D8 /* Records */ = {
@@ -126,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				484163C16BE36FDE84C7DBC4 /* PDFExporter.swift */,
+				CD1E76F30514F1CD79816D56 /* VocabularyStore.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -136,6 +152,7 @@
 				F22DFA743C732E899DCC4284 /* Assets.xcassets */,
 				CA762C6598F2BA8EAF3D43AA /* GeethaHealthApp.swift */,
 				0659B2815DB5F3A99642A796 /* Models */,
+				0B48CD511A727820113B2F33 /* Resources */,
 				93C3BD0CED18E8BA7D6AC6A4 /* Services */,
 				5EBE2C58C074FF9C1F09728A /* Views */,
 			);
@@ -228,6 +245,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				349E112D9416915EACE26CF5 /* Assets.xcassets in Resources */,
+				F0FAF35A92DDB2DBF28A0766 /* medications.json in Resources */,
+				4B6BF9141E4EDAA72A46699D /* vaccines.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +278,7 @@
 				B09BBC5F489F3CA751A305FD /* RootView.swift in Sources */,
 				711D634E264C7853F135CF04 /* ShareSheet.swift in Sources */,
 				FF1BC7004EA091437BA1F014 /* SummaryPDFView.swift in Sources */,
+				02E866D9C7F5FB0189F10402 /* VocabularyStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

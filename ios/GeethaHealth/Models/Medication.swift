@@ -12,6 +12,9 @@ final class Medication {
     var startDate: Date?
     var endDate: Date?
     var notes: String?
+    // Vocabulary coding (RxNorm RXCUI when picked from autocomplete)
+    var code: String?
+    var codeSystem: String?
     var sourceFHIRJSON: Data?
     var healthKitIdentifier: String?
     var createdAt: Date
@@ -25,6 +28,8 @@ final class Medication {
         startDate: Date? = nil,
         endDate: Date? = nil,
         notes: String? = nil,
+        code: String? = nil,
+        codeSystem: String? = nil,
         sourceFHIRJSON: Data? = nil,
         healthKitIdentifier: String? = nil
     ) {
@@ -35,6 +40,8 @@ final class Medication {
         self.startDate = startDate
         self.endDate = endDate
         self.notes = notes
+        self.code = code
+        self.codeSystem = codeSystem
         self.sourceFHIRJSON = sourceFHIRJSON
         self.healthKitIdentifier = healthKitIdentifier
         self.createdAt = Date()
