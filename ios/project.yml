@@ -17,6 +17,7 @@ targets:
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
         INFOPLIST_KEY_CFBundleDisplayName: Geetha Health
         INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
+        INFOPLIST_KEY_NSCameraUsageDescription: Geetha Health uses the camera to scan paper medical documents into your record.
         CURRENT_PROJECT_VERSION: 1
         MARKETING_VERSION: 0.1.0
         GENERATE_INFOPLIST_FILE: YES
