@@ -438,6 +438,7 @@
 				INFOPLIST_KEY_NSCameraUsageDescription = "Geetha Health uses the camera to scan paper medical documents into your record.";
 				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Geetha Health imports the clinical records you choose (conditions, medications, allergies, and immunizations) from Apple Health into your on-device medical record. Nothing is uploaded or shared.";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Geetha Health reads the health records you choose from Apple Health to add them to your on-device medical record. Nothing is uploaded or shared.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Geetha Health does not write data to Apple Health. This permission is unused.";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -468,6 +469,7 @@
 				INFOPLIST_KEY_NSCameraUsageDescription = "Geetha Health uses the camera to scan paper medical documents into your record.";
 				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Geetha Health imports the clinical records you choose (conditions, medications, allergies, and immunizations) from Apple Health into your on-device medical record. Nothing is uploaded or shared.";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Geetha Health reads the health records you choose from Apple Health to add them to your on-device medical record. Nothing is uploaded or shared.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Geetha Health does not write data to Apple Health. This permission is unused.";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
