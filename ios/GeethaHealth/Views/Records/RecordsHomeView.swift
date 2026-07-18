@@ -4,6 +4,7 @@ import SwiftData
 struct RecordsHomeView: View {
     var profile: Profile
     @State private var sharedSummary: SharedFile?
+    @State private var showingHealthImport = false
 
     var body: some View {
         NavigationStack {
@@ -43,6 +44,16 @@ struct RecordsHomeView: View {
                         AppointmentListView(profile: profile)
                     }
                 }
+
+                Section {
+                    Button {
+                        showingHealthImport = true
+                    } label: {
+                        Label("Import from Apple Health", systemImage: "heart.text.square")
+                    }
+                } footer: {
+                    Text("Pull your clinical records from providers connected to the Health app. Imported records stay on this device.")
+                }
             }
             .navigationTitle("Records")
             .toolbar {
@@ -63,6 +74,9 @@ struct RecordsHomeView: View {
             .sheet(item: $sharedSummary) { file in
                 ShareSheet(url: file.url)
                     .presentationDetents([.medium, .large])
+            }
+            .sheet(isPresented: $showingHealthImport) {
+                HealthRecordsImportView(profile: profile)
             }
         }
     }
