@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		02E866D9C7F5FB0189F10402 /* VocabularyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1E76F30514F1CD79816D56 /* VocabularyStore.swift */; };
+		0314C1F42A2DEA0CDE8D6F4C /* DocumentScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E76EF84FCD911561E768842 /* DocumentScannerView.swift */; };
 		223C255725A44407925EE725 /* PDFExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484163C16BE36FDE84C7DBC4 /* PDFExporter.swift */; };
 		300316A57406CEAD51C313D6 /* ImmunizationViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CBC559C5FD3DCFCFAD6333 /* ImmunizationViews.swift */; };
 		31C3D111972454E945B92452 /* ConditionViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71C25E6BD852A0A8C43EB7F /* ConditionViews.swift */; };
@@ -20,6 +21,7 @@
 		8190639831D17F2DDBAF60E9 /* Condition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960568D60E0A9D21DAD43D4B /* Condition.swift */; };
 		8427CD7615F80A29D18040E8 /* MedicalDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A61748CEE4EA315A938EC1 /* MedicalDocument.swift */; };
 		8C73961D6DFAFBE3B51F71BE /* Appointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A61AF6C1A787A1A32DADF16 /* Appointment.swift */; };
+		94B495A1769531D012C7DCA2 /* DocumentFileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFCEFB96C381B68486A597 /* DocumentFileStore.swift */; };
 		9DF6EFC67DFC078E7765386A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFF6428A6F7C80BEE145798 /* ProfileView.swift */; };
 		A5C1C17227F81893CD97B9C5 /* AllergyViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901CCC84600AA1481611A21D /* AllergyViews.swift */; };
 		AB40C0E0345E0383241CDFFB /* GeethaHealthApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA762C6598F2BA8EAF3D43AA /* GeethaHealthApp.swift */; };
@@ -41,6 +43,7 @@
 		1A3756591E4CDBA9BCE980D8 /* medications.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = medications.json; sourceTree = "<group>"; };
 		244CFAC6CB30C469521D3FC7 /* SummaryPDFView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryPDFView.swift; sourceTree = "<group>"; };
 		2A61AF6C1A787A1A32DADF16 /* Appointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
+		2E76EF84FCD911561E768842 /* DocumentScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerView.swift; sourceTree = "<group>"; };
 		3F177A5592AA81F3CD5DA34B /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		484163C16BE36FDE84C7DBC4 /* PDFExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFExporter.swift; sourceTree = "<group>"; };
 		7EFBE5FF4780B112998B6F4D /* Immunization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Immunization.swift; sourceTree = "<group>"; };
@@ -52,6 +55,7 @@
 		9DE313E8C50DEEDDF82F4C07 /* vaccines.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = vaccines.json; sourceTree = "<group>"; };
 		A3A61748CEE4EA315A938EC1 /* MedicalDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalDocument.swift; sourceTree = "<group>"; };
 		A3C2A1AD7151AA511B39B196 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
+		B5AFCEFB96C381B68486A597 /* DocumentFileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentFileStore.swift; sourceTree = "<group>"; };
 		C71C25E6BD852A0A8C43EB7F /* ConditionViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionViews.swift; sourceTree = "<group>"; };
 		CA762C6598F2BA8EAF3D43AA /* GeethaHealthApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeethaHealthApp.swift; sourceTree = "<group>"; };
 		CD1E76F30514F1CD79816D56 /* VocabularyStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyStore.swift; sourceTree = "<group>"; };
@@ -132,6 +136,7 @@
 		8FA9957D799C7BD64BFD285E /* Documents */ = {
 			isa = PBXGroup;
 			children = (
+				2E76EF84FCD911561E768842 /* DocumentScannerView.swift */,
 				EADD5EA8744453A4ECB67DF0 /* DocumentsView.swift */,
 			);
 			path = Documents;
@@ -140,6 +145,7 @@
 		93C3BD0CED18E8BA7D6AC6A4 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				B5AFCEFB96C381B68486A597 /* DocumentFileStore.swift */,
 				484163C16BE36FDE84C7DBC4 /* PDFExporter.swift */,
 				CD1E76F30514F1CD79816D56 /* VocabularyStore.swift */,
 			);
@@ -263,6 +269,8 @@
 				BE2099AF5E33FD1C0BD4B0C7 /* AppointmentViews.swift in Sources */,
 				8190639831D17F2DDBAF60E9 /* Condition.swift in Sources */,
 				31C3D111972454E945B92452 /* ConditionViews.swift in Sources */,
+				94B495A1769531D012C7DCA2 /* DocumentFileStore.swift in Sources */,
+				0314C1F42A2DEA0CDE8D6F4C /* DocumentScannerView.swift in Sources */,
 				BF1449DC2C61D8C9EE584B10 /* DocumentsView.swift in Sources */,
 				AB40C0E0345E0383241CDFFB /* GeethaHealthApp.swift in Sources */,
 				504D55535958FBE40ADF58D7 /* Immunization.swift in Sources */,
@@ -416,6 +424,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Geetha Health";
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Geetha Health uses the camera to scan paper medical documents into your record.";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -442,6 +451,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Geetha Health";
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Geetha Health uses the camera to scan paper medical documents into your record.";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (

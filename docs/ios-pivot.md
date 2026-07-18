@@ -34,20 +34,21 @@ Imported records carry `sourceFHIRJSON: Data?` (raw FHIR retained verbatim) and 
 
 | # | Deliverable | Status |
 |---|-------------|--------|
-| M1 | Running app: onboarding, manual CRUD for all record types | Scaffolded; verify in Simulator once Xcode installed |
-| M2 | PDF medical-summary export via share sheet | — |
-| M3 | Documents: VisionKit scan, photo/PDF import, QuickLook | — |
-| M4 | Apple Health Records import (gated on Apple entitlement approval) | — |
+| M1 | Running app: onboarding, manual CRUD for all record types | ✅ Shipped |
+| M2 | PDF medical-summary export via share sheet ([pdf-export.md](pdf-export.md)) | ✅ Shipped |
+| — | Medication/vaccine autocomplete, RxNorm/CVX coding ([autocomplete.md](autocomplete.md)) | ✅ Shipped |
+| M3 | Documents: VisionKit scan, photo/PDF import, QuickLook ([documents.md](documents.md)) | ✅ Shipped |
+| M4 | Apple Health Records import | Unblocked — no pre-approval needed (see below) |
 | M5 | Polish + FHIR bundle export, Face ID lock | — |
 | M6 | TestFlight → App Store submission | — |
 
-## Phase 0 checklist (long lead times — do these now)
+## Phase 0 checklist
 
-- [ ] Enroll in Apple Developer Program ($99/yr, days to verify)
-- [ ] Install full Xcode; `sudo xcode-select -s /Applications/Xcode.app/Contents/Developer`
-- [ ] Publish privacy policy page (required for health apps and for the entitlement request)
-- [ ] Request HealthKit **Clinical Records entitlement** from Apple (weeks of lead time — this gates M4, not launch)
-- [ ] Reserve bundle ID (`com.geethahealth.GeethaHealth`) + app name in App Store Connect
+- [x] Enroll in Apple Developer Program (team `3Z8928HS54`)
+- [x] Install full Xcode
+- [x] Publish privacy policy page: https://rohanrobinson.github.io/GeethaHealthAI/privacy (GitHub Pages from `main` `/docs`)
+- [x] ~~Request Clinical Records entitlement~~ **Correction (July 2026): no pre-approval request exists anymore.** The clinical records entitlement (`com.apple.developer.healthkit.access` = `health-records`) is self-added via Xcode's HealthKit capability; Apple evaluates the usage at App Review instead (usage-description strings + privacy policy URL required). The separate "Verifiable Health Records" request form is a different entitlement (SMART Health Card verification) — not needed by this app.
+- [ ] Create app record in App Store Connect (needed for first TestFlight upload)
 
 ## App Review notes
 
