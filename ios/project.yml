@@ -10,6 +10,12 @@ targets:
     platform: iOS
     sources:
       - GeethaHealth
+    entitlements:
+      path: GeethaHealth/GeethaHealth.entitlements
+      properties:
+        com.apple.developer.healthkit: true
+        com.apple.developer.healthkit.access:
+          - health-records
     settings:
       base:
         SWIFT_VERSION: "5.9"
@@ -18,6 +24,8 @@ targets:
         INFOPLIST_KEY_CFBundleDisplayName: Geetha Health
         INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
         INFOPLIST_KEY_NSCameraUsageDescription: Geetha Health uses the camera to scan paper medical documents into your record.
+        INFOPLIST_KEY_NSHealthShareUsageDescription: Geetha Health reads the health records you choose from Apple Health to add them to your on-device medical record. Nothing is uploaded or shared.
+        INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription: Geetha Health imports the clinical records you choose (conditions, medications, allergies, and immunizations) from Apple Health into your on-device medical record. Nothing is uploaded or shared.
         CURRENT_PROJECT_VERSION: 1
         MARKETING_VERSION: 0.1.0
         GENERATE_INFOPLIST_FILE: YES
