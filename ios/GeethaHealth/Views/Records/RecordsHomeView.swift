@@ -3,7 +3,7 @@ import SwiftData
 
 struct RecordsHomeView: View {
     var profile: Profile
-    @State private var sharedSummary: SharedFile?
+    @State private var sharedExport: SharedFile?
     @State private var showingHealthImport = false
 
     var body: some View {
@@ -57,11 +57,26 @@ struct RecordsHomeView: View {
             }
             .navigationTitle("Records")
             .toolbar {
-                Button {
-                    if let url = PDFExporter.makeSummaryPDF(for: profile) {
-                        sharedSummary = SharedFile(url: url)
+                Menu {
+                    Button {
+                        if let url = PDFExporter.makeSummaryPDF(for: profile) {
+                            sharedExport = SharedFile(url: url)
+                        }
+                    } label: {
+                        Label("Share as PDF summary", systemImage: "doc.richtext")
+                    }
+                    Button {
+                        if let url = FHIRExporter.makeBundle(for: profile) {
+                            sharedExport = SharedFile(url: url)
+                        }
+                    } label: {
+                        Label("Share as FHIR bundle", systemImage: "curlybraces")
                     }
                 } label: {
+                    // Fixed sizes are intentional: this compact icon+caption
+                    // must fit the round toolbar button at every text size;
+                    // it doesn't scale with Dynamic Type, same as system
+                    // toolbar buttons.
                     VStack(spacing: 1) {
                         Image(systemName: "square.and.arrow.up")
                             .font(.system(size: 15, weight: .medium))
@@ -71,7 +86,7 @@ struct RecordsHomeView: View {
                 }
                 .accessibilityLabel("Share summary")
             }
-            .sheet(item: $sharedSummary) { file in
+            .sheet(item: $sharedExport) { file in
                 ShareSheet(url: file.url)
                     .presentationDetents([.medium, .large])
             }

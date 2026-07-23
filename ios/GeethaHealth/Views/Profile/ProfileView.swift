@@ -4,6 +4,10 @@ import SwiftData
 struct ProfileView: View {
     @Bindable var profile: Profile
     @State private var isEditing = false
+    @State private var storageUsedText = "Calculating…"
+    @AppStorage(AppLock.enabledKey) private var appLockEnabled = false
+    @State private var isConfirmingFaceID = false
+    @State private var faceIDError: String?
 
     var body: some View {
         NavigationStack {
@@ -19,7 +23,17 @@ struct ProfileView: View {
                     row("Phone", profile.emergencyContactPhone)
                 }
                 Section {
+                    Toggle("Require Face ID", isOn: faceIDBinding)
+                } footer: {
+                    if let faceIDError {
+                        Text(faceIDError)
+                    } else {
+                        Text("When on, Geetha Health locks itself whenever you leave the app.")
+                    }
+                }
+                Section {
                     LabeledContent("Data storage", value: "On this device only")
+                    LabeledContent("Storage used", value: storageUsedText)
                 } footer: {
                     Text("Geetha Health stores your records only on this device. Nothing is uploaded or shared unless you export it.")
                 }
@@ -31,7 +45,32 @@ struct ProfileView: View {
             .sheet(isPresented: $isEditing) {
                 ProfileEditView(profile: profile)
             }
+            .task {
+                storageUsedText = StorageInfo.formatted()
+            }
         }
+    }
+
+    private var faceIDBinding: Binding<Bool> {
+        Binding(
+            get: { appLockEnabled },
+            set: { newValue in
+                guard newValue else {
+                    appLockEnabled = false
+                    faceIDError = nil
+                    return
+                }
+                Task {
+                    let result = await AppLock.authenticate(reason: "Confirm to require Face ID for Geetha Health")
+                    if result {
+                        appLockEnabled = true
+                        faceIDError = nil
+                    } else {
+                        faceIDError = "Couldn't confirm Face ID or your device passcode. Make sure one is set up in Settings, then try again."
+                    }
+                }
+            }
+        )
     }
 
     private func row(_ label: String, _ value: String?) -> some View {
