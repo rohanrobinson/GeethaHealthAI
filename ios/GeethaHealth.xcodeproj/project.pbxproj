@@ -7,16 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01D49AA2F3B6752B22CB93C1 /* LockScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21132A0CAF51ED0A8C940B09 /* LockScreenView.swift */; };
 		02E866D9C7F5FB0189F10402 /* VocabularyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1E76F30514F1CD79816D56 /* VocabularyStore.swift */; };
 		0314C1F42A2DEA0CDE8D6F4C /* DocumentScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E76EF84FCD911561E768842 /* DocumentScannerView.swift */; };
 		223C255725A44407925EE725 /* PDFExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484163C16BE36FDE84C7DBC4 /* PDFExporter.swift */; };
 		300316A57406CEAD51C313D6 /* ImmunizationViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CBC559C5FD3DCFCFAD6333 /* ImmunizationViews.swift */; };
 		31C3D111972454E945B92452 /* ConditionViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71C25E6BD852A0A8C43EB7F /* ConditionViews.swift */; };
 		349E112D9416915EACE26CF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F22DFA743C732E899DCC4284 /* Assets.xcassets */; };
+		481001603D412490A02BF70D /* FHIRExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B6276706B45E19A3CF1C4 /* FHIRExporter.swift */; };
 		4B6BF9141E4EDAA72A46699D /* vaccines.json in Resources */ = {isa = PBXBuildFile; fileRef = 9DE313E8C50DEEDDF82F4C07 /* vaccines.json */; };
 		4F5B0011208262C3C2CB2832 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD8595A6C95F1041E3C57D /* Profile.swift */; };
 		504D55535958FBE40ADF58D7 /* Immunization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFBE5FF4780B112998B6F4D /* Immunization.swift */; };
 		676816A04F62CA3B6B8C111F /* RecordsHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993126121FABC2254AA9562D /* RecordsHomeView.swift */; };
+		6D0A37460F0058F3809D5001 /* StorageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C87E9E1C0141E788DB80202 /* StorageInfo.swift */; };
+		70901228AA5E4D4E5B8D1B57 /* AppLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2260A608156AAE84801956 /* AppLock.swift */; };
 		711D634E264C7853F135CF04 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2A1AD7151AA511B39B196 /* ShareSheet.swift */; };
 		8190639831D17F2DDBAF60E9 /* Condition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960568D60E0A9D21DAD43D4B /* Condition.swift */; };
 		8427CD7615F80A29D18040E8 /* MedicalDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A61748CEE4EA315A938EC1 /* MedicalDocument.swift */; };
@@ -43,10 +47,12 @@
 		06221CACEA07FD54EC37C0CB /* Allergy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Allergy.swift; sourceTree = "<group>"; };
 		159685BA1612153F44C55D7F /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		1A3756591E4CDBA9BCE980D8 /* medications.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = medications.json; sourceTree = "<group>"; };
+		21132A0CAF51ED0A8C940B09 /* LockScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenView.swift; sourceTree = "<group>"; };
 		244CFAC6CB30C469521D3FC7 /* SummaryPDFView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryPDFView.swift; sourceTree = "<group>"; };
 		2A61AF6C1A787A1A32DADF16 /* Appointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
 		2E76EF84FCD911561E768842 /* DocumentScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerView.swift; sourceTree = "<group>"; };
 		37841FA855389A38EAB5F278 /* HealthRecordsImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthRecordsImporter.swift; sourceTree = "<group>"; };
+		3C87E9E1C0141E788DB80202 /* StorageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageInfo.swift; sourceTree = "<group>"; };
 		3F177A5592AA81F3CD5DA34B /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		441113A1776DCDC6B28216D9 /* HealthRecordsImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthRecordsImportView.swift; sourceTree = "<group>"; };
 		484163C16BE36FDE84C7DBC4 /* PDFExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFExporter.swift; sourceTree = "<group>"; };
@@ -65,11 +71,13 @@
 		CA762C6598F2BA8EAF3D43AA /* GeethaHealthApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeethaHealthApp.swift; sourceTree = "<group>"; };
 		CD1E76F30514F1CD79816D56 /* VocabularyStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyStore.swift; sourceTree = "<group>"; };
 		D3EFFA7C6542744A0277FC05 /* GeethaHealth.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = GeethaHealth.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF2260A608156AAE84801956 /* AppLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLock.swift; sourceTree = "<group>"; };
 		E96F4951DB3BC4979CA2A9C8 /* AppointmentViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentViews.swift; sourceTree = "<group>"; };
 		EADD5EA8744453A4ECB67DF0 /* DocumentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsView.swift; sourceTree = "<group>"; };
 		EADE6A1E4A1F3D3EC136495F /* MedicationViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationViews.swift; sourceTree = "<group>"; };
 		EEFF6428A6F7C80BEE145798 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		F22DFA743C732E899DCC4284 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F29B6276706B45E19A3CF1C4 /* FHIRExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FHIRExporter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -116,6 +124,7 @@
 				159685BA1612153F44C55D7F /* RootView.swift */,
 				8FA9957D799C7BD64BFD285E /* Documents */,
 				BB82532F1F6A107334E9D5AD /* Export */,
+				8F7FEFBBB3A221D72714B95A /* Lock */,
 				9D55B54ABF15F92F905136C7 /* Onboarding */,
 				8400AC45F693263C5604C591 /* Profile */,
 				38730BF383E2185B43B2C9D8 /* Records */,
@@ -139,6 +148,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		8F7FEFBBB3A221D72714B95A /* Lock */ = {
+			isa = PBXGroup;
+			children = (
+				21132A0CAF51ED0A8C940B09 /* LockScreenView.swift */,
+			);
+			path = Lock;
+			sourceTree = "<group>";
+		};
 		8FA9957D799C7BD64BFD285E /* Documents */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,9 +168,12 @@
 		93C3BD0CED18E8BA7D6AC6A4 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				DF2260A608156AAE84801956 /* AppLock.swift */,
 				B5AFCEFB96C381B68486A597 /* DocumentFileStore.swift */,
+				F29B6276706B45E19A3CF1C4 /* FHIRExporter.swift */,
 				37841FA855389A38EAB5F278 /* HealthRecordsImporter.swift */,
 				484163C16BE36FDE84C7DBC4 /* PDFExporter.swift */,
+				3C87E9E1C0141E788DB80202 /* StorageInfo.swift */,
 				CD1E76F30514F1CD79816D56 /* VocabularyStore.swift */,
 			);
 			path = Services;
@@ -273,6 +293,7 @@
 			files = (
 				B34972897E0E0ACD7C1F82B7 /* Allergy.swift in Sources */,
 				A5C1C17227F81893CD97B9C5 /* AllergyViews.swift in Sources */,
+				70901228AA5E4D4E5B8D1B57 /* AppLock.swift in Sources */,
 				8C73961D6DFAFBE3B51F71BE /* Appointment.swift in Sources */,
 				BE2099AF5E33FD1C0BD4B0C7 /* AppointmentViews.swift in Sources */,
 				8190639831D17F2DDBAF60E9 /* Condition.swift in Sources */,
@@ -280,11 +301,13 @@
 				94B495A1769531D012C7DCA2 /* DocumentFileStore.swift in Sources */,
 				0314C1F42A2DEA0CDE8D6F4C /* DocumentScannerView.swift in Sources */,
 				BF1449DC2C61D8C9EE584B10 /* DocumentsView.swift in Sources */,
+				481001603D412490A02BF70D /* FHIRExporter.swift in Sources */,
 				AB40C0E0345E0383241CDFFB /* GeethaHealthApp.swift in Sources */,
 				86DBE6C479117F79DD4A68AC /* HealthRecordsImportView.swift in Sources */,
 				AC329B10C5E643DFFA0ABF16 /* HealthRecordsImporter.swift in Sources */,
 				504D55535958FBE40ADF58D7 /* Immunization.swift in Sources */,
 				300316A57406CEAD51C313D6 /* ImmunizationViews.swift in Sources */,
+				01D49AA2F3B6752B22CB93C1 /* LockScreenView.swift in Sources */,
 				8427CD7615F80A29D18040E8 /* MedicalDocument.swift in Sources */,
 				F1C74A0525E93FD1ECF5DF0B /* Medication.swift in Sources */,
 				D230CCB0F0A4953E1981552A /* MedicationViews.swift in Sources */,
@@ -295,6 +318,7 @@
 				676816A04F62CA3B6B8C111F /* RecordsHomeView.swift in Sources */,
 				B09BBC5F489F3CA751A305FD /* RootView.swift in Sources */,
 				711D634E264C7853F135CF04 /* ShareSheet.swift in Sources */,
+				6D0A37460F0058F3809D5001 /* StorageInfo.swift in Sources */,
 				FF1BC7004EA091437BA1F014 /* SummaryPDFView.swift in Sources */,
 				02E866D9C7F5FB0189F10402 /* VocabularyStore.swift in Sources */,
 			);
@@ -430,12 +454,13 @@
 				CODE_SIGN_ENTITLEMENTS = GeethaHealth/GeethaHealth.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 3Z8928HS54;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Geetha Health";
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Geetha Health uses the camera to scan paper medical documents into your record.";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Geetha Health uses Face ID to keep your medical records private if someone else picks up your phone.";
 				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Geetha Health imports the clinical records you choose (conditions, medications, allergies, and immunizations) from Apple Health into your on-device medical record. Nothing is uploaded or shared.";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Geetha Health reads the health records you choose from Apple Health to add them to your on-device medical record. Nothing is uploaded or shared.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Geetha Health does not write data to Apple Health. This permission is unused.";
@@ -461,12 +486,13 @@
 				CODE_SIGN_ENTITLEMENTS = GeethaHealth/GeethaHealth.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 3Z8928HS54;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Geetha Health";
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Geetha Health uses the camera to scan paper medical documents into your record.";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Geetha Health uses Face ID to keep your medical records private if someone else picks up your phone.";
 				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Geetha Health imports the clinical records you choose (conditions, medications, allergies, and immunizations) from Apple Health into your on-device medical record. Nothing is uploaded or shared.";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Geetha Health reads the health records you choose from Apple Health to add them to your on-device medical record. Nothing is uploaded or shared.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Geetha Health does not write data to Apple Health. This permission is unused.";
