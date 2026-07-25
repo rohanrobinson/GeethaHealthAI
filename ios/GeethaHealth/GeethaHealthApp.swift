@@ -15,6 +15,7 @@ struct GeethaHealthApp: App {
             Immunization.self,
             Appointment.self,
             MedicalDocument.self,
+            SymptomObservation.self,
         ])
     }
 }

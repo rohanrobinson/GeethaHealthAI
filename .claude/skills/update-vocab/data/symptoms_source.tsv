@@ -1,0 +1,58 @@
+Headache	25064002	head pain|migraine
+Dizziness	404640003	lightheaded|vertigo|woozy
+Nausea	422587007	queasy|sick to my stomach
+Vomiting	422400008	throwing up|being sick
+Fatigue	84229001	tiredness|lethargy|exhaustion|low energy
+Fever	386661006	high temperature|pyrexia
+Chills	43724002	shivering|feeling cold
+Cough	49727002	coughing
+Sore throat	162397003	throat pain|scratchy throat
+Shortness of breath	267036007	breathlessness|dyspnea|cant breathe|trouble breathing
+Wheezing	56018004	whistling breath
+Chest pain	29857009	chest tightness|chest pressure
+Palpitations	80313002	racing heart|heart pounding|fluttering heart
+Abdominal pain	21522001	stomach ache|stomach pain|belly pain|stomach discomfort|tummy ache
+Abdominal bloating	248490000	bloating|bloated|gassy
+Heartburn	16331000	acid reflux|indigestion
+Diarrhea	62315008	loose stools|runny stools
+Constipation	14760008	cant poop|hard stools
+Loss of appetite	79890006	not hungry|poor appetite|anorexia
+Difficulty swallowing	40739000	dysphagia|trouble swallowing
+Back pain	161891005	backache|lower back pain
+Neck pain	81680005	stiff neck
+Joint pain	57676002	arthralgia|achy joints
+Muscle pain	68962001	myalgia|sore muscles|aching muscles
+Muscle cramp	45352006	cramp|leg cramp|charley horse
+Weakness	13791008	asthenia|feeling weak
+Numbness	44077006	loss of feeling|no sensation
+Tingling	62507009	pins and needles|paresthesia
+Swelling	267038008	edema|puffiness|swollen
+Rash	271807003	skin eruption|hives|red skin
+Itching	418290006	pruritus|itchy skin
+Hair loss	56317004	alopecia|thinning hair|balding
+Nasal congestion	68235000	stuffy nose|blocked nose
+Runny nose	267101005	rhinorrhea
+Sneezing	76067001
+Nosebleed	12441001	epistaxis|bleeding nose
+Hoarseness	50219008	hoarse voice|raspy voice
+Ear pain	16001004	earache
+Ringing in ears	60862009	tinnitus
+Toothache	27355003	tooth pain
+Dry mouth	87715008	cotton mouth
+Blurred vision	246636008	blurry vision|fuzzy vision
+Dry eyes	400984002	gritty eyes
+Painful urination	49650001	dysuria|burning urination
+Frequent urination	162116003	peeing often|urinary frequency
+Excessive thirst	17173007	polydipsia|always thirsty
+Excessive sweating	52613005	sweating|diaphoresis
+Night sweats	42984000	sweating at night
+Hot flashes	70944005	hot flush
+Weight loss	267024001	losing weight
+Insomnia	193462001	trouble sleeping|cant sleep|sleeplessness
+Anxiety	48694002	feeling anxious|nervousness|worry
+Depressed mood	366979004	feeling down|low mood|sadness
+Restlessness	162223000	cant sit still|agitation
+Confusion	40917007	disorientation|foggy thinking|brain fog
+Memory impairment	386807006	forgetfulness|memory loss
+Fainting	271594007	syncope|passing out
+Feeling faint	309585006	presyncope|nearly fainting

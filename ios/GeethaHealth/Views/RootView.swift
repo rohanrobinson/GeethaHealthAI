@@ -15,6 +15,8 @@ struct RootView: View {
                 TabView {
                     RecordsHomeView(profile: profile)
                         .tabItem { Label("Records", systemImage: "heart.text.square") }
+                    AskView(profile: profile)
+                        .tabItem { Label("Ask", systemImage: "sparkles") }
                     DocumentsView(profile: profile)
                         .tabItem { Label("Documents", systemImage: "doc.on.doc") }
                     ProfileView(profile: profile)

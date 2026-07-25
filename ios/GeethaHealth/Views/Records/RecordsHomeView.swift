@@ -28,6 +28,9 @@ struct RecordsHomeView: View {
                 }
 
                 Section("Health records") {
+                    recordLink("Symptoms", icon: "waveform.path.ecg", count: profile.symptoms.count) {
+                        SymptomListView(profile: profile)
+                    }
                     recordLink("Conditions", icon: "stethoscope", count: profile.conditions.count) {
                         ConditionListView(profile: profile)
                     }
