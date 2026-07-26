@@ -1,7 +1,7 @@
 ---
 name: update-vocab
-description: Refresh the bundled autocomplete vocabularies — medications.json from the latest NLM RxTerms release and/or vaccines.json from the CDC CVX code list. Use when asked to update, refresh, or regenerate the medication or vaccine vocabularies/autocomplete data.
-argument-hint: "[meds|vaccines|both]"
+description: Refresh the bundled autocomplete vocabularies — medications.json from the latest NLM RxTerms release, vaccines.json from the CDC CVX code list, and/or the curated symptoms.json. Use when asked to update, refresh, or regenerate the medication, vaccine, or symptom vocabularies/autocomplete data.
+argument-hint: "[meds|vaccines|symptoms|all]"
 disable-model-invocation: true
 allowed-tools: Bash(curl *) Bash(unzip *) Bash(python3 *) Read
 ---
@@ -9,11 +9,19 @@ allowed-tools: Bash(curl *) Bash(unzip *) Bash(python3 *) Read
 Refresh the on-device autocomplete vocabularies. Target: **$ARGUMENTS** (if
 empty, do both). Background: [docs/autocomplete.md](${CLAUDE_PROJECT_DIR}/docs/autocomplete.md).
 
-The canonical files are `ios/GeethaHealth/Resources/medications.json` and
-`ios/GeethaHealth/Resources/vaccines.json` (compact single-line JSON; schema
+The canonical files are `ios/GeethaHealth/Resources/medications.json`,
+`ios/GeethaHealth/Resources/vaccines.json`, and
+`ios/GeethaHealth/Resources/symptoms.json` (compact single-line JSON; schema
 defined by the Decodable structs in
 `ios/GeethaHealth/Services/VocabularyStore.swift`). Ignore the stale
 `medications.json`/`vaccines.json` at the repo root — do not update those.
+
+**Symptoms are curated, not downloaded.** SNOMED CT is license-gated, so
+there is no free upstream release to pull like RxTerms/CVX. The canonical
+source is the hand-curated TSV `update-vocab/data/symptoms_source.tsv`
+(`name<TAB>SNOMED code<TAB>synonym|synonym|...`). To add/adjust symptoms, edit
+that TSV — never the JSON — then regenerate (step 2). Verify SNOMED codes
+against a trusted browser (e.g. browser.ihtsdotools.org) before adding them.
 
 Work in a temp dir (`mktemp -d`) for downloads. If not already on a feature
 branch, create one — Rohan merges via GitHub PRs, never directly to main.
@@ -36,6 +44,7 @@ pipe-delimited data, not an HTML error page.
 ```
 python3 ${CLAUDE_SKILL_DIR}/scripts/convert_rxterms.py RxTermsYYYYMM.txt ios/GeethaHealth/Resources/medications.json
 python3 ${CLAUDE_SKILL_DIR}/scripts/convert_cvx.py cvx.txt ios/GeethaHealth/Resources/vaccines.json
+python3 ${CLAUDE_SKILL_DIR}/scripts/convert_symptoms.py ${CLAUDE_SKILL_DIR}/data/symptoms_source.tsv ios/GeethaHealth/Resources/symptoms.json
 ```
 
 Both scripts refuse to write on suspiciously small output or failed sanity

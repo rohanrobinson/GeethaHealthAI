@@ -34,6 +34,9 @@ enum FHIRExporter {
         for appointment in profile.appointments {
             entries.append(entry(resource: resource(for: appointment)))
         }
+        for symptom in profile.symptoms {
+            entries.append(entry(resource: resource(for: symptom)))
+        }
 
         let bundle: [String: Any] = [
             "resourceType": "Bundle",
@@ -165,6 +168,37 @@ enum FHIRExporter {
             resource["occurrenceDateTime"] = isoDay.string(from: date)
         }
         if let notes = immunization.notes {
+            resource["note"] = [["text": notes]]
+        }
+        return resource
+    }
+
+    // MARK: Symptom — always synthesized (patient-reported Observation)
+
+    private static func resource(for symptom: SymptomObservation) -> [String: Any] {
+        if let verbatim = decodedVerbatim(symptom.sourceFHIRJSON) { return verbatim }
+        var resource: [String: Any] = [
+            "resourceType": "Observation",
+            "id": UUID().uuidString,
+            "status": symptom.status == "resolved" ? "final" : "preliminary",
+            "category": [[
+                "coding": [[
+                    "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                    "code": "exam",
+                    "display": "Exam",
+                ]],
+            ]],
+            "code": codeableConcept(text: symptom.name, code: symptom.code, system: symptom.codeSystem),
+        ]
+        // Prefer onset for clinical relevance; fall back to when it was logged.
+        resource["effectiveDateTime"] = isoDate.string(from: symptom.onsetDate ?? symptom.recordedDate)
+        if let severity = symptom.severity {
+            resource["interpretation"] = [codeableConcept(text: severity.capitalized)]
+        }
+        if let bodySite = symptom.bodySite, !bodySite.isEmpty {
+            resource["bodySite"] = codeableConcept(text: bodySite)
+        }
+        if let notes = symptom.notes {
             resource["note"] = [["text": notes]]
         }
         return resource

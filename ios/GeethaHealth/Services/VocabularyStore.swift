@@ -30,13 +30,25 @@ struct VaccineEntry: Decodable, Identifiable, Sendable {
     var cvxCode: String { c }
 }
 
+struct SymptomEntry: Decodable, Identifiable, Sendable {
+    let n: String              // display name, e.g. "Dizziness"
+    let c: String              // SNOMED CT concept id
+    let syn: [String]?         // optional synonyms to widen search recall
+
+    var id: String { c + n }
+    var displayName: String { n }
+    var snomedCode: String { c }
+    var synonyms: [String] { syn ?? [] }
+}
+
 // Bundled, fully offline vocabularies (RxTerms for drugs, CDC CVX for
-// vaccines). Search never leaves the device.
+// vaccines, curated SNOMED CT for symptoms). Search never leaves the device.
 actor VocabularyStore {
     static let shared = VocabularyStore()
 
     private var drugs: [DrugEntry]?
     private var vaccines: [VaccineEntry]?
+    private var symptoms: [SymptomEntry]?
 
     func searchDrugs(_ query: String, limit: Int = 20) -> [DrugEntry] {
         if drugs == nil {
@@ -50,6 +62,15 @@ actor VocabularyStore {
             vaccines = Self.load("vaccines", as: [VaccineEntry].self)
         }
         return Self.rank(query: query, in: vaccines ?? [], limit: limit) { $0.displayName + " " + $0.fullName }
+    }
+
+    func searchSymptoms(_ query: String, limit: Int = 20) -> [SymptomEntry] {
+        if symptoms == nil {
+            symptoms = Self.load("symptoms", as: [SymptomEntry].self)
+        }
+        return Self.rank(query: query, in: symptoms ?? [], limit: limit) {
+            ([$0.displayName] + $0.synonyms).joined(separator: " ")
+        }
     }
 
     private static func load<T: Decodable>(_ resource: String, as type: T.Type) -> T? {

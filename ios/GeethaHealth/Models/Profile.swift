@@ -27,6 +27,8 @@ final class Profile {
     var appointments: [Appointment] = []
     @Relationship(deleteRule: .cascade, inverse: \MedicalDocument.profile)
     var documents: [MedicalDocument] = []
+    @Relationship(deleteRule: .cascade, inverse: \SymptomObservation.profile)
+    var symptoms: [SymptomObservation] = []
 
     init(
         givenName: String,
