@@ -66,6 +66,10 @@ struct SymptomFormView: View {
     @Environment(\.dismiss) private var dismiss
     var profile: Profile
     var existing: SymptomObservation?
+    // Initial values for a brand-new record (existing == nil), e.g. a symptom
+    // parsed from voice that the user wants to review in the full form before
+    // saving. Ignored when editing an existing record.
+    var prefill: SymptomDraft?
 
     @State private var name = ""
     @State private var severity = ""
@@ -151,17 +155,32 @@ struct SymptomFormView: View {
     }
 
     private func load() {
-        guard let existing else { return }
-        acceptedName = existing.name
-        name = existing.name
-        severity = existing.severity ?? ""
-        bodySite = existing.bodySite ?? ""
-        hasOnsetDate = existing.onsetDate != nil
-        onsetDate = existing.onsetDate ?? Date()
-        status = existing.status
-        notes = existing.notes ?? ""
-        code = existing.code
-        codeSystem = existing.codeSystem
+        if let existing {
+            acceptedName = existing.name
+            name = existing.name
+            severity = existing.severity ?? ""
+            bodySite = existing.bodySite ?? ""
+            hasOnsetDate = existing.onsetDate != nil
+            onsetDate = existing.onsetDate ?? Date()
+            status = existing.status
+            notes = existing.notes ?? ""
+            code = existing.code
+            codeSystem = existing.codeSystem
+        } else if let prefill {
+            // Seed a new record from a voice-parsed draft. Mark the name as
+            // accepted so the vocabulary search doesn't immediately clear the
+            // code we already resolved.
+            if !prefill.name.isEmpty { acceptedName = prefill.name }
+            name = prefill.name
+            severity = prefill.severity ?? ""
+            bodySite = prefill.bodySite ?? ""
+            hasOnsetDate = prefill.onsetDate != nil
+            onsetDate = prefill.onsetDate ?? Date()
+            status = prefill.status
+            notes = prefill.notes ?? ""
+            code = prefill.code
+            codeSystem = prefill.codeSystem
+        }
     }
 
     private func save() {
