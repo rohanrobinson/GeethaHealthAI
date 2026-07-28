@@ -3,8 +3,12 @@ import SwiftData
 
 struct RecordsHomeView: View {
     var profile: Profile
+    @Environment(\.modelContext) private var context
     @State private var sharedExport: SharedFile?
     @State private var showingHealthImport = false
+    @State private var showingVoiceEntry = false
+    @State private var undoRecord: SymptomObservation?
+    @State private var undoTask: Task<Void, Never>?
 
     var body: some View {
         NavigationStack {
@@ -46,6 +50,16 @@ struct RecordsHomeView: View {
                     recordLink("Appointments", icon: "calendar", count: profile.appointments.count) {
                         AppointmentListView(profile: profile)
                     }
+                }
+
+                Section {
+                    Button {
+                        showingVoiceEntry = true
+                    } label: {
+                        Label("Add by voice", systemImage: "mic.fill")
+                    }
+                } footer: {
+                    Text("Speak a symptom and we'll turn it into a record — reviewed by you before it's saved.")
                 }
 
                 Section {
@@ -96,7 +110,50 @@ struct RecordsHomeView: View {
             .sheet(isPresented: $showingHealthImport) {
                 HealthRecordsImportView(profile: profile)
             }
+            .sheet(isPresented: $showingVoiceEntry) {
+                VoiceSymptomView(profile: profile) { saved in
+                    presentUndo(for: saved)
+                }
+            }
+            .overlay(alignment: .bottom) {
+                if let record = undoRecord {
+                    undoSnackbar(for: record)
+                        .transition(.move(edge: .bottom).combined(with: .opacity))
+                }
+            }
         }
+    }
+
+    // MARK: - Undo
+
+    private func presentUndo(for record: SymptomObservation) {
+        undoTask?.cancel()
+        withAnimation { undoRecord = record }
+        undoTask = Task {
+            try? await Task.sleep(for: .seconds(5))
+            guard !Task.isCancelled else { return }
+            withAnimation { undoRecord = nil }
+        }
+    }
+
+    private func undoSnackbar(for record: SymptomObservation) -> some View {
+        HStack {
+            Text("Saved \(record.name)")
+                .foregroundStyle(.white)
+            Spacer()
+            Button("Undo") {
+                undoTask?.cancel()
+                context.delete(record)
+                withAnimation { undoRecord = nil }
+            }
+            .fontWeight(.semibold)
+            .tint(.white)
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 12)
+        .background(Color.black.opacity(0.85), in: Capsule())
+        .padding(.horizontal)
+        .padding(.bottom, 8)
     }
 
     private func recordLink<Destination: View>(

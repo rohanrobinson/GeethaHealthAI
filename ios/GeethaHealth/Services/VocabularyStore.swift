@@ -73,6 +73,29 @@ actor VocabularyStore {
         }
     }
 
+    // Finds the symptom whose name or a synonym appears in free text (e.g. a
+    // voice transcript), preferring the longest match so "chest pain" wins over
+    // "pain". Used by voice entry to resolve a spoken description to a coded
+    // symptom when there's no clean typed name to search on.
+    func bestSymptomMatch(in text: String) -> SymptomEntry? {
+        if symptoms == nil {
+            symptoms = Self.load("symptoms", as: [SymptomEntry].self)
+        }
+        let hay = text.lowercased()
+        var best: SymptomEntry?
+        var bestLength = 0
+        for entry in symptoms ?? [] {
+            for candidate in [entry.displayName] + entry.synonyms {
+                let needle = candidate.lowercased()
+                if needle.count > bestLength, hay.contains(needle) {
+                    best = entry
+                    bestLength = needle.count
+                }
+            }
+        }
+        return best
+    }
+
     private static func load<T: Decodable>(_ resource: String, as type: T.Type) -> T? {
         guard let url = Bundle.main.url(forResource: resource, withExtension: "json"),
               let data = try? Data(contentsOf: url) else { return nil }

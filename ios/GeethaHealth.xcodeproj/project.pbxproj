@@ -18,6 +18,7 @@
 		31C3D111972454E945B92452 /* ConditionViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71C25E6BD852A0A8C43EB7F /* ConditionViews.swift */; };
 		349E112D9416915EACE26CF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F22DFA743C732E899DCC4284 /* Assets.xcassets */; };
 		3A82EBBF420FEA875C0153D1 /* symptoms.json in Resources */ = {isa = PBXBuildFile; fileRef = 9918E16C528D49BD7CB96A1A /* symptoms.json */; };
+		464C47B549445C7E10F5F83F /* SymptomParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812C1194804E4F9FC8337F47 /* SymptomParser.swift */; };
 		481001603D412490A02BF70D /* FHIRExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B6276706B45E19A3CF1C4 /* FHIRExporter.swift */; };
 		4B6BF9141E4EDAA72A46699D /* vaccines.json in Resources */ = {isa = PBXBuildFile; fileRef = 9DE313E8C50DEEDDF82F4C07 /* vaccines.json */; };
 		4F5B0011208262C3C2CB2832 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD8595A6C95F1041E3C57D /* Profile.swift */; };
@@ -36,17 +37,30 @@
 		A5C1C17227F81893CD97B9C5 /* AllergyViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901CCC84600AA1481611A21D /* AllergyViews.swift */; };
 		AB40C0E0345E0383241CDFFB /* GeethaHealthApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA762C6598F2BA8EAF3D43AA /* GeethaHealthApp.swift */; };
 		AC329B10C5E643DFFA0ABF16 /* HealthRecordsImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37841FA855389A38EAB5F278 /* HealthRecordsImporter.swift */; };
+		B047D9DCF33D7BEE78DEE969 /* VoiceSymptomUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98943F3071D6F06BE6EF5C32 /* VoiceSymptomUITests.swift */; };
 		B09BBC5F489F3CA751A305FD /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159685BA1612153F44C55D7F /* RootView.swift */; };
 		B34972897E0E0ACD7C1F82B7 /* Allergy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06221CACEA07FD54EC37C0CB /* Allergy.swift */; };
 		BE2099AF5E33FD1C0BD4B0C7 /* AppointmentViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96F4951DB3BC4979CA2A9C8 /* AppointmentViews.swift */; };
 		BF1449DC2C61D8C9EE584B10 /* DocumentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD5EA8744453A4ECB67DF0 /* DocumentsView.swift */; };
+		CAFE23FC120ECB1D02639983 /* SpeechTranscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4506001C1A34CABFA14F3F5 /* SpeechTranscriber.swift */; };
 		D230CCB0F0A4953E1981552A /* MedicationViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADE6A1E4A1F3D3EC136495F /* MedicationViews.swift */; };
 		E5173D67C0494FB5AE1F0321 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F177A5592AA81F3CD5DA34B /* OnboardingView.swift */; };
 		F0FAF35A92DDB2DBF28A0766 /* medications.json in Resources */ = {isa = PBXBuildFile; fileRef = 1A3756591E4CDBA9BCE980D8 /* medications.json */; };
 		F1C74A0525E93FD1ECF5DF0B /* Medication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D3790E7AB7389013F8BE16 /* Medication.swift */; };
+		F59385744595B5403023E17D /* VoiceSymptomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401503D3D9CA23518039055B /* VoiceSymptomView.swift */; };
 		FA168B78A62F9C9E71E342AB /* SymptomAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD75372C19BF3EFF03834B8 /* SymptomAssistant.swift */; };
 		FF1BC7004EA091437BA1F014 /* SummaryPDFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244CFAC6CB30C469521D3FC7 /* SummaryPDFView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		48C6630EB2195726F592ED3F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9468CA477529E037DDE9A34B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4F957E5D9FBE8BDCB4CEDC15;
+			remoteInfo = GeethaHealth;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		02CBC559C5FD3DCFCFAD6333 /* ImmunizationViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmunizationViews.swift; sourceTree = "<group>"; };
@@ -55,25 +69,30 @@
 		1A3756591E4CDBA9BCE980D8 /* medications.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = medications.json; sourceTree = "<group>"; };
 		21132A0CAF51ED0A8C940B09 /* LockScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenView.swift; sourceTree = "<group>"; };
 		244CFAC6CB30C469521D3FC7 /* SummaryPDFView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryPDFView.swift; sourceTree = "<group>"; };
+		26E2325F659200F111952DB9 /* GeethaHealthUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = GeethaHealthUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A61AF6C1A787A1A32DADF16 /* Appointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
 		2E76EF84FCD911561E768842 /* DocumentScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerView.swift; sourceTree = "<group>"; };
 		37841FA855389A38EAB5F278 /* HealthRecordsImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthRecordsImporter.swift; sourceTree = "<group>"; };
 		3C87E9E1C0141E788DB80202 /* StorageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageInfo.swift; sourceTree = "<group>"; };
 		3F177A5592AA81F3CD5DA34B /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		401503D3D9CA23518039055B /* VoiceSymptomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceSymptomView.swift; sourceTree = "<group>"; };
 		441113A1776DCDC6B28216D9 /* HealthRecordsImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthRecordsImportView.swift; sourceTree = "<group>"; };
 		484163C16BE36FDE84C7DBC4 /* PDFExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFExporter.swift; sourceTree = "<group>"; };
 		50A976875825B31695706120 /* AskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskView.swift; sourceTree = "<group>"; };
 		7EDDE029A1A98BA4290E2700 /* GeethaHealth.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GeethaHealth.entitlements; sourceTree = "<group>"; };
 		7EFBE5FF4780B112998B6F4D /* Immunization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Immunization.swift; sourceTree = "<group>"; };
 		7FFD8595A6C95F1041E3C57D /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		812C1194804E4F9FC8337F47 /* SymptomParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomParser.swift; sourceTree = "<group>"; };
 		82D3790E7AB7389013F8BE16 /* Medication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Medication.swift; sourceTree = "<group>"; };
 		901CCC84600AA1481611A21D /* AllergyViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergyViews.swift; sourceTree = "<group>"; };
 		960568D60E0A9D21DAD43D4B /* Condition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Condition.swift; sourceTree = "<group>"; };
+		98943F3071D6F06BE6EF5C32 /* VoiceSymptomUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceSymptomUITests.swift; sourceTree = "<group>"; };
 		9918E16C528D49BD7CB96A1A /* symptoms.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = symptoms.json; sourceTree = "<group>"; };
 		993126121FABC2254AA9562D /* RecordsHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsHomeView.swift; sourceTree = "<group>"; };
 		9DE313E8C50DEEDDF82F4C07 /* vaccines.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = vaccines.json; sourceTree = "<group>"; };
 		A3A61748CEE4EA315A938EC1 /* MedicalDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalDocument.swift; sourceTree = "<group>"; };
 		A3C2A1AD7151AA511B39B196 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
+		B4506001C1A34CABFA14F3F5 /* SpeechTranscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechTranscriber.swift; sourceTree = "<group>"; };
 		B5AFCEFB96C381B68486A597 /* DocumentFileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentFileStore.swift; sourceTree = "<group>"; };
 		C05D09DD25C030EFACAC577B /* SymptomViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomViews.swift; sourceTree = "<group>"; };
 		C44AF2FD0ADDE392F0BF86D1 /* SymptomObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomObservation.swift; sourceTree = "<group>"; };
@@ -129,6 +148,7 @@
 				EADE6A1E4A1F3D3EC136495F /* MedicationViews.swift */,
 				993126121FABC2254AA9562D /* RecordsHomeView.swift */,
 				C05D09DD25C030EFACAC577B /* SymptomViews.swift */,
+				401503D3D9CA23518039055B /* VoiceSymptomView.swift */,
 			);
 			path = Records;
 			sourceTree = "<group>";
@@ -160,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				D3EFFA7C6542744A0277FC05 /* GeethaHealth.app */,
+				26E2325F659200F111952DB9 /* GeethaHealthUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -189,9 +210,11 @@
 				F29B6276706B45E19A3CF1C4 /* FHIRExporter.swift */,
 				37841FA855389A38EAB5F278 /* HealthRecordsImporter.swift */,
 				484163C16BE36FDE84C7DBC4 /* PDFExporter.swift */,
+				B4506001C1A34CABFA14F3F5 /* SpeechTranscriber.swift */,
 				3C87E9E1C0141E788DB80202 /* StorageInfo.swift */,
 				EDD75372C19BF3EFF03834B8 /* SymptomAssistant.swift */,
 				CE958FCBB6663CE52E55FA6A /* SymptomInsights.swift */,
+				812C1194804E4F9FC8337F47 /* SymptomParser.swift */,
 				CD1E76F30514F1CD79816D56 /* VocabularyStore.swift */,
 			);
 			path = Services;
@@ -232,8 +255,17 @@
 			isa = PBXGroup;
 			children = (
 				9C0A2A9E1ACF5A3C16C48E24 /* GeethaHealth */,
+				FC8C48D4486437D0053AE293 /* GeethaHealthUITests */,
 				8D7BE19DB601E59D9FF59329 /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		FC8C48D4486437D0053AE293 /* GeethaHealthUITests */ = {
+			isa = PBXGroup;
+			children = (
+				98943F3071D6F06BE6EF5C32 /* VoiceSymptomUITests.swift */,
+			);
+			path = GeethaHealthUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,6 +289,24 @@
 			productReference = D3EFFA7C6542744A0277FC05 /* GeethaHealth.app */;
 			productType = "com.apple.product-type.application";
 		};
+		65F9513326070F060366035A /* GeethaHealthUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8BB0E295BA321883530687D8 /* Build configuration list for PBXNativeTarget "GeethaHealthUITests" */;
+			buildPhases = (
+				0FDE30717AB2D96D8DCCEE01 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				848126905CE2EDEFF72E91D6 /* PBXTargetDependency */,
+			);
+			name = GeethaHealthUITests;
+			packageProductDependencies = (
+			);
+			productName = GeethaHealthUITests;
+			productReference = 26E2325F659200F111952DB9 /* GeethaHealthUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -269,6 +319,11 @@
 					4F957E5D9FBE8BDCB4CEDC15 = {
 						DevelopmentTeam = 3Z8928HS54;
 						ProvisioningStyle = Automatic;
+					};
+					65F9513326070F060366035A = {
+						DevelopmentTeam = 3Z8928HS54;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 4F957E5D9FBE8BDCB4CEDC15;
 					};
 				};
 			};
@@ -287,6 +342,7 @@
 			projectRoot = "";
 			targets = (
 				4F957E5D9FBE8BDCB4CEDC15 /* GeethaHealth */,
+				65F9513326070F060366035A /* GeethaHealthUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -306,6 +362,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0FDE30717AB2D96D8DCCEE01 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B047D9DCF33D7BEE78DEE969 /* VoiceSymptomUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5EC589AADB000EE2DFB91CCB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -338,17 +402,28 @@
 				676816A04F62CA3B6B8C111F /* RecordsHomeView.swift in Sources */,
 				B09BBC5F489F3CA751A305FD /* RootView.swift in Sources */,
 				711D634E264C7853F135CF04 /* ShareSheet.swift in Sources */,
+				CAFE23FC120ECB1D02639983 /* SpeechTranscriber.swift in Sources */,
 				6D0A37460F0058F3809D5001 /* StorageInfo.swift in Sources */,
 				FF1BC7004EA091437BA1F014 /* SummaryPDFView.swift in Sources */,
 				FA168B78A62F9C9E71E342AB /* SymptomAssistant.swift in Sources */,
 				8716D02A306C905F842A8543 /* SymptomInsights.swift in Sources */,
 				07CEF25D35EB1AAA9FA8F013 /* SymptomObservation.swift in Sources */,
+				464C47B549445C7E10F5F83F /* SymptomParser.swift in Sources */,
 				2539A985E714EA622D4C8B78 /* SymptomViews.swift in Sources */,
 				02E866D9C7F5FB0189F10402 /* VocabularyStore.swift in Sources */,
+				F59385744595B5403023E17D /* VoiceSymptomView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		848126905CE2EDEFF72E91D6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4F957E5D9FBE8BDCB4CEDC15 /* GeethaHealth */;
+			targetProxy = 48C6630EB2195726F592ED3F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		5579AF69A16AD9281C260A8F /* Debug */ = {
@@ -470,6 +545,25 @@
 			};
 			name = Release;
 		};
+		8985E28721E9943FE2F1EA17 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3Z8928HS54;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.geethahealth.GeethaHealthUITests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GeethaHealth;
+			};
+			name = Release;
+		};
 		A746193396054698CA5C985F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -488,6 +582,8 @@
 				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Geetha Health imports the clinical records you choose (conditions, medications, allergies, and immunizations) from Apple Health into your on-device medical record. Nothing is uploaded or shared.";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Geetha Health reads the health records you choose from Apple Health to add them to your on-device medical record. Nothing is uploaded or shared.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Geetha Health does not write data to Apple Health. This permission is unused.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Geetha Health uses the microphone so you can add records by speaking. Audio is transcribed on your device and never uploaded.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Geetha Health transcribes your speech on-device to turn what you say into medical records. Nothing is sent to a server.";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -520,6 +616,8 @@
 				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Geetha Health imports the clinical records you choose (conditions, medications, allergies, and immunizations) from Apple Health into your on-device medical record. Nothing is uploaded or shared.";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Geetha Health reads the health records you choose from Apple Health to add them to your on-device medical record. Nothing is uploaded or shared.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Geetha Health does not write data to Apple Health. This permission is unused.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Geetha Health uses the microphone so you can add records by speaking. Audio is transcribed on your device and never uploaded.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Geetha Health transcribes your speech on-device to turn what you say into medical records. Nothing is sent to a server.";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -534,6 +632,25 @@
 			};
 			name = Debug;
 		};
+		F77AFB0A63E6C27395534214 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3Z8928HS54;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.geethahealth.GeethaHealthUITests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GeethaHealth;
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -542,6 +659,15 @@
 			buildConfigurations = (
 				5579AF69A16AD9281C260A8F /* Debug */,
 				6C11DC47BB2707035884BF8D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		8BB0E295BA321883530687D8 /* Build configuration list for PBXNativeTarget "GeethaHealthUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F77AFB0A63E6C27395534214 /* Debug */,
+				8985E28721E9943FE2F1EA17 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

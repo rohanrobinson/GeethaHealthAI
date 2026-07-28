@@ -24,6 +24,8 @@ targets:
         INFOPLIST_KEY_CFBundleDisplayName: Geetha Health
         INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
         INFOPLIST_KEY_NSCameraUsageDescription: Geetha Health uses the camera to scan paper medical documents into your record.
+        INFOPLIST_KEY_NSMicrophoneUsageDescription: Geetha Health uses the microphone so you can add records by speaking. Audio is transcribed on your device and never uploaded.
+        INFOPLIST_KEY_NSSpeechRecognitionUsageDescription: Geetha Health transcribes your speech on-device to turn what you say into medical records. Nothing is sent to a server.
         INFOPLIST_KEY_NSHealthShareUsageDescription: Geetha Health reads the health records you choose from Apple Health to add them to your on-device medical record. Nothing is uploaded or shared.
         INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription: Geetha Health imports the clinical records you choose (conditions, medications, allergies, and immunizations) from Apple Health into your on-device medical record. Nothing is uploaded or shared.
         INFOPLIST_KEY_NSHealthUpdateUsageDescription: Geetha Health does not write data to Apple Health. This permission is unused.
@@ -36,3 +38,34 @@ targets:
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         DEVELOPMENT_TEAM: 3Z8928HS54
         CODE_SIGN_STYLE: Automatic
+  GeethaHealthUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - GeethaHealthUITests
+    dependencies:
+      - target: GeethaHealth
+    settings:
+      base:
+        TEST_TARGET_NAME: GeethaHealth
+        GENERATE_INFOPLIST_FILE: YES
+        DEVELOPMENT_TEAM: 3Z8928HS54
+        CODE_SIGN_STYLE: Automatic
+schemes:
+  GeethaHealth:
+    build:
+      targets:
+        GeethaHealth: all
+        GeethaHealthUITests: [test]
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - GeethaHealthUITests
+    profile:
+      config: Release
+    analyze:
+      config: Debug
+    archive:
+      config: Release
