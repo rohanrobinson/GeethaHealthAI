@@ -23,6 +23,7 @@
 		4B6BF9141E4EDAA72A46699D /* vaccines.json in Resources */ = {isa = PBXBuildFile; fileRef = 9DE313E8C50DEEDDF82F4C07 /* vaccines.json */; };
 		4F5B0011208262C3C2CB2832 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD8595A6C95F1041E3C57D /* Profile.swift */; };
 		504D55535958FBE40ADF58D7 /* Immunization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFBE5FF4780B112998B6F4D /* Immunization.swift */; };
+		516375C614D16DD4514CFF72 /* MarketingScreenshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14846461F1489B3FD8EB90E /* MarketingScreenshotTests.swift */; };
 		676816A04F62CA3B6B8C111F /* RecordsHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993126121FABC2254AA9562D /* RecordsHomeView.swift */; };
 		6D0A37460F0058F3809D5001 /* StorageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C87E9E1C0141E788DB80202 /* StorageInfo.swift */; };
 		70901228AA5E4D4E5B8D1B57 /* AppLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2260A608156AAE84801956 /* AppLock.swift */; };
@@ -102,6 +103,7 @@
 		CE958FCBB6663CE52E55FA6A /* SymptomInsights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomInsights.swift; sourceTree = "<group>"; };
 		D3EFFA7C6542744A0277FC05 /* GeethaHealth.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = GeethaHealth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF2260A608156AAE84801956 /* AppLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLock.swift; sourceTree = "<group>"; };
+		E14846461F1489B3FD8EB90E /* MarketingScreenshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketingScreenshotTests.swift; sourceTree = "<group>"; };
 		E96F4951DB3BC4979CA2A9C8 /* AppointmentViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentViews.swift; sourceTree = "<group>"; };
 		EADD5EA8744453A4ECB67DF0 /* DocumentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsView.swift; sourceTree = "<group>"; };
 		EADE6A1E4A1F3D3EC136495F /* MedicationViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationViews.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 		FC8C48D4486437D0053AE293 /* GeethaHealthUITests */ = {
 			isa = PBXGroup;
 			children = (
+				E14846461F1489B3FD8EB90E /* MarketingScreenshotTests.swift */,
 				98943F3071D6F06BE6EF5C32 /* VoiceSymptomUITests.swift */,
 			);
 			path = GeethaHealthUITests;
@@ -366,6 +369,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				516375C614D16DD4514CFF72 /* MarketingScreenshotTests.swift in Sources */,
 				B047D9DCF33D7BEE78DEE969 /* VoiceSymptomUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

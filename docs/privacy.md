@@ -1,4 +1,8 @@
-# Geetha Health Privacy Policy
+---
+layout: page
+title: Privacy Policy
+description: Geetha Health stores your medical records only on your iPhone. No accounts, no server, no analytics, no trackers.
+---
 
 **Effective date:** July 17, 2026
 
