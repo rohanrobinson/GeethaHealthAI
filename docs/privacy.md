@@ -4,13 +4,15 @@ title: Privacy Policy
 description: Geetha Health stores your medical records only on your iPhone. No accounts, no server, no analytics, no trackers.
 ---
 
-**Effective date:** July 17, 2026
+**Effective date:** September 7, 2026 (previous version: July 17, 2026)
 
-Geetha Health is a personal medical record app for iPhone. This policy describes how the app handles your information. The short version: **your health data stays on your device. We don't collect it, we can't see it, and we never sell it.**
+Geetha Health is a personal medical record app for iPhone. This policy describes how the app, and this website, handle your information. The short version: **your health data stays on your device. We don't collect it, we can't see it, and we never sell it.**
 
 ## Data we collect
 
-**None.** Geetha Health has no user accounts, no server, no analytics, no advertising, and no trackers. The app never transmits your information to us or to anyone else.
+**From the app: none.** Geetha Health has no user accounts, no server, no analytics, no advertising, and no trackers. The app never transmits your information to us or to anyone else.
+
+**From this website: only an email address, and only if you type one in.** The site has no analytics, no trackers, and no cookies. If you enter your address in the launch-notification box, we collect that address and nothing else — see [Mailing list](#mailing-list) below. We never ask for health information on this website, and you should never send us any.
 
 ## Where your data lives
 
@@ -30,9 +32,21 @@ If you choose to connect Apple Health, Geetha Health can import your clinical re
 
 Geetha Health can create a summary of your record (for example, a PDF to give a healthcare provider). Sharing happens **only** when you explicitly export something, using the standard iOS share sheet. Where a shared copy goes (email, AirDrop, print, a file) is entirely under your control; the app itself sends nothing anywhere.
 
+## Mailing list
+
+Before the app is released, this website offers a box where you can leave your email address to be told when it launches. This is entirely separate from the app, and entirely optional — the app itself still has no accounts and sends nothing anywhere.
+
+- We collect **your email address only**. We don't ask for your name, and we never ask for health information.
+- We use it for **one purpose**: telling you about Geetha Health's launch and significant product updates. No newsletter, no marketing from anyone else.
+- Addresses are stored with **Buttondown**, our email provider, who processes them on our behalf and does not sell or share them.
+- We will **never sell or rent your address**, and we will never share it with advertisers or data brokers.
+- Every email we send includes an **unsubscribe link**. You can also email us at any time and we will delete your address — no questions, no confirmation loop.
+
 ## Deleting your data
 
-Your data belongs to you. Delete any record inside the app at any time, or delete the app to erase everything it stored. Because we keep no copies, deletion on your device is complete — there is nothing for us to delete on a server.
+Your data belongs to you. Delete any record inside the app at any time, or delete the app to erase everything it stored. Because we keep no copies of your health data, deletion on your device is complete — there is nothing for us to delete on a server.
+
+The one exception is your email address, if you gave us one for the mailing list. Unsubscribe from any email we send, or write to us, and we will delete it.
 
 ## Children
 
