@@ -1,0 +1,25 @@
+# Jekyll config for the LEGACY GitHub Pages site (source: main /docs).
+#
+# The real marketing site lives in /site and is deployed to geethahealth.com.
+# This Pages site exists for one reason: to keep
+#   https://rohanrobinson.github.io/GeethaHealthAI/privacy
+# resolving, because that URL is registered in App Store Connect.
+#
+# Once geethahealth.com is live AND the App Store Connect privacy URL has been
+# updated to https://geethahealth.com/privacy, this whole folder can become a
+# redirect (or go away entirely).
+title: Geetha Health
+
+# Keep engineering docs off the public web. They stay in git and stay readable
+# on github.com; they just aren't served as pages. privacy.md is deliberately
+# NOT excluded.
+exclude:
+  - DATA_MODEL.md
+  - autocomplete.md
+  - documents.md
+  - health-records-import.md
+  - ios-pivot.md
+  - m5-polish.md
+  - pdf-export.md
+
+plugins: []

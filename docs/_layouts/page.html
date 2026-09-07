@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ page.title }} · Geetha Health</title>
+<meta name="description" content="{{ page.description }}">
+<meta name="color-scheme" content="light dark">
+<!--
+  LEGACY URL ONLY.
+
+  This GitHub Pages site exists to keep
+  https://rohanrobinson.github.io/GeethaHealthAI/privacy resolving, because that
+  URL is registered in App Store Connect. The real website lives in /site and is
+  deployed to geethahealth.com.
+
+  The policy text here must stay identical to site/privacy.html. Once
+  geethahealth.com is live and the App Store Connect privacy URL has been
+  updated, replace this page with a redirect to https://geethahealth.com/privacy
+  and delete the duplicate.
+
+  Self-contained on purpose: no external stylesheet, so docs/ needs no assets.
+-->
+<style>
+  :root {
+    --bg: #fff; --text: #16202b; --muted: #5b6b7c; --brand: #347ab3; --border: #e2e8ee;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #0f1519; --text: #e8eef4; --muted: #9aabbb; --brand: #6ba9dc; --border: #26323d; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 0 24px; background: var(--bg); color: var(--text);
+    font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  main { max-width: 720px; margin: 0 auto; padding: 48px 0 72px; }
+  h1 { font-size: clamp(1.9rem, 4vw, 2.4rem); line-height: 1.2; letter-spacing: -.02em; margin: 0 0 1rem; }
+  h2 { font-size: 1.25rem; margin: 2.4rem 0 .5rem; letter-spacing: -.01em; }
+  p, li { color: var(--muted); }
+  strong { color: var(--text); font-weight: 650; }
+  ul { padding-left: 1.3rem; }
+  li { margin-bottom: .5rem; }
+  a { color: var(--brand); }
+  footer { border-top: 1px solid var(--border); margin-top: 3rem; padding-top: 1.5rem; font-size: .85rem; color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <h1>{{ page.title }}</h1>
+  {{ content }}
+  <footer>
+    Geetha Health is a personal record-keeping app. It is not a medical device and does
+    not provide medical advice or diagnosis.
+  </footer>
+</main>
+</body>
+</html>
