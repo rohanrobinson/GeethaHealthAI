@@ -247,11 +247,34 @@
   </div>
 </section>
 
-<section class="band closing">
+<section class="band closing" id="notify">
   <div class="wrap closinginner">
     <h2>Keep your own health record.</h2>
     <p>Private by construction, and yours to export at any time.</p>
     <span class="comingsoon comingsoon-lg comingsoon-invert">Coming Fall 2026</span>
+
+    <!-- Plain form POST, no JavaScript, so the site's CSP stays script-free
+         and this still works with JS disabled. -->
+    <form class="signup" method="post" action="/api/notify">
+      <label class="signup-label" for="email">Want an email when it launches?</label>
+      <div class="signup-row">
+        <input class="signup-input" type="email" id="email" name="email"
+               placeholder="you@example.com" required
+               autocomplete="email" spellcheck="false" maxlength="254">
+        <button class="btn btn-lg btn-invert" type="submit">Notify me</button>
+      </div>
+
+      <!-- Honeypot: hidden from people, filled in by bots. -->
+      <div class="hp" aria-hidden="true">
+        <label for="company">Company</label>
+        <input type="text" id="company" name="company" tabindex="-1" autocomplete="off">
+      </div>
+
+      <p class="signup-note">
+        One email, when the app ships. Your address goes to our mailing list and
+        nowhere else — never sold, never shared, unsubscribe any time.
+      </p>
+    </form>
   </div>
 </section>
 
@@ -271,7 +294,8 @@
     </nav>
     <p class="colophon">
       © 2026 GeethaKamal LLC · Made for iPhone ·
-      This site has no analytics, no trackers, and no cookies.
+      No analytics, no trackers, no cookies — we only receive your
+      email address if you choose to give it to us.
     </p>
   </div>
 </footer>
