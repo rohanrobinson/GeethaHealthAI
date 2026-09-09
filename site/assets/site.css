@@ -255,40 +255,56 @@ img { max-width: 100%; height: auto; display: block; }
 
 /* ---------- signup form ---------- */
 
-.signup { margin: 2.5rem auto 0; max-width: 30rem; text-align: left; }
+.signup { margin: 2.25rem auto 0; max-width: 27rem; }
 
 .signup-label {
-  display: block; margin-bottom: .6rem;
-  font-weight: 600; font-size: .95rem;
+  display: block; margin-bottom: .75rem;
+  font-weight: 600; font-size: 1rem;
   color: var(--text-invert);
 }
 
-.signup-row { display: flex; gap: .6rem; }
+/* One rounded control containing the input and button, rather than two
+   floating boxes. Focus styling moves to the shell so the whole thing
+   responds as a unit. */
+.signup-row {
+  display: flex; align-items: stretch; gap: 0;
+  background: color-mix(in srgb, #fff 9%, transparent);
+  border: 1px solid color-mix(in srgb, #fff 26%, transparent);
+  border-radius: 999px;
+  padding: 5px;
+  transition: border-color .15s ease, background .15s ease;
+}
+.signup-row:focus-within {
+  border-color: color-mix(in srgb, #fff 62%, transparent);
+  background: color-mix(in srgb, #fff 14%, transparent);
+}
 
 .signup-input {
   flex: 1 1 auto; min-width: 0;
   font: inherit; font-size: 1rem;
-  padding: .8rem 1rem;
+  padding: .7rem .5rem .7rem 1.1rem;
   color: var(--text-invert);
-  background: color-mix(in srgb, #fff 10%, transparent);
-  border: 1px solid color-mix(in srgb, #fff 32%, transparent);
-  border-radius: 12px;
+  background: transparent;
+  border: 0; border-radius: 999px;
   -webkit-appearance: none; appearance: none;
 }
-.signup-input::placeholder { color: color-mix(in srgb, var(--text-invert) 52%, transparent); }
-.signup-input:focus {
-  outline: none;
-  border-color: color-mix(in srgb, #fff 70%, transparent);
-  background: color-mix(in srgb, #fff 16%, transparent);
+.signup-input::placeholder { color: color-mix(in srgb, var(--text-invert) 45%, transparent); }
+.signup-input:focus { outline: none; }
+/* The shell shows focus; keep a real ring for keyboard users in forced-colors. */
+@media (forced-colors: active) {
+  .signup-input:focus-visible { outline: 2px solid; outline-offset: -2px; }
 }
-/* Keyboard users still get a visible ring. */
-.signup-input:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
 
-.signup .btn { flex: none; border-radius: 12px; }
+.signup .btn {
+  flex: none; border-radius: 999px;
+  padding-inline: 1.35rem;
+  font-size: .95rem;
+}
+.signup .btn:hover { transform: none; }
 
 .signup-note {
-  margin: .9rem 0 0; font-size: .82rem; line-height: 1.5;
-  color: color-mix(in srgb, var(--text-invert) 62%, transparent);
+  margin: 1rem 0 0; font-size: .82rem; line-height: 1.55;
+  color: color-mix(in srgb, var(--text-invert) 60%, transparent);
 }
 
 /* Honeypot. Off-screen rather than display:none — some bots skip hidden
@@ -298,8 +314,12 @@ img { max-width: 100%; height: auto; display: block; }
   width: 1px; height: 1px; overflow: hidden;
 }
 
-@media (max-width: 520px) {
-  .signup-row { flex-direction: column; }
+@media (max-width: 460px) {
+  .signup-row {
+    flex-direction: column; gap: .5rem;
+    border-radius: 20px; padding: .5rem;
+  }
+  .signup-input { padding: .7rem .9rem; text-align: center; }
   .signup .btn { width: 100%; }
 }
 

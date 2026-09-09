@@ -20,6 +20,7 @@ exclude:
   - health-records-import.md
   - ios-pivot.md
   - m5-polish.md
+  - marketing-site.md
   - pdf-export.md
 
 plugins: []

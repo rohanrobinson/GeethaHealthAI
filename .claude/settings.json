@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xcrun simctl list *)",
+      "Bash(xcrun xcresulttool get *)",
+      "Bash(xcrun xcresulttool export *)",
+      "Bash(sips -g *)"
+    ]
+  }
+}
