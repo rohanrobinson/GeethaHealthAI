@@ -29,3 +29,17 @@ Re-running the import later only offers what's new (dedupe below).
 - Lab results (`labResultRecord`) and vitals aren't imported yet — only the four types with matching models.
 - No automatic background sync; import is manual and on-demand (a deliberate choice — the user stays in control).
 - Parsing is best-effort; unusual provider payloads fall back to display name + raw JSON.
+
+## App Review screenshots
+
+Apple's review of 1.0 (Oct 2026) asked for "the entire Clinical Health Records permissions flow, including what users see after CHR data has been added to the app". The answer lives in `ios/AppReview/clinical-health-records-flow/`: 15 numbered screenshots and `GeethaHealth-CHR-Flow.pdf`, the same shots three to a page with captions. If App Store Connect stalls on many attachments, send the PDF alone.
+
+Regenerate both after any change to the import flow:
+
+```bash
+ios/AppReview/capture-chr-flow.sh
+```
+
+The script erases a dedicated "Geetha Health Review" simulator, then runs `HealthRecordsReviewScreenshots` twice, once for granting access and once for "Don't Share", reinstalling the app between runs because uninstalling is what resets the HealthKit grant. The test connects Apple's sample provider in the Health app itself, so no manual setup is needed. Captions are in `ios/AppReview/captions.txt`, one line per screenshot. Update them if the shots change.
+
+The test drives Apple's system sheet by its accessibility identifiers (`UIA.Health.*`), which can change between iOS releases. If it breaks after an iOS update, those identifiers are the first place to look.

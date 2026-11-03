@@ -78,6 +78,7 @@ Live speech and Foundation Models are unreliable in the Simulator, so the whole 
 
 - No medical-advice or diagnosis language anywhere in UI copy; keep the "not a medical device" and "patient-entered data" disclaimers (the latter is on PDF export).
 - HealthKit clinical records use the self-added `com.apple.developer.healthkit.access = health-records` entitlement, declared in `project.yml`. The usage-description strings there are what Apple evaluates — edit them there, deliberately.
+- App Review has asked for screenshots of the Clinical Health Records flow; `ios/AppReview/capture-chr-flow.sh` regenerates them (see [health-records-import](docs/health-records-import.md#app-review-screenshots)).
 - Privacy label is "Data Not Collected"; anything that would change that is a product decision, not an implementation detail. The label covers data collected **through the app** — the website's mailing list does not change it, but the published privacy policy now covers both and says so explicitly.
 
 ## Workflow

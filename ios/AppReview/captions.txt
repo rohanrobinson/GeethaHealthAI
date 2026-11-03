@@ -1,0 +1,15 @@
+1. Records tab. The user starts the import by tapping "Import from Apple Health". Nothing is read from HealthKit before this.
+2. iOS presents Apple's Health Records sharing sheet.
+3. Step 1 of 4: the user chooses which provider accounts to share from.
+4. Step 2 of 4: Apple's "You Should Know" notice.
+5. Step 3 of 4: our usage description, privacy policy link, and read-only access per category. The user turns on only the categories they want.
+6. Step 4 of 4: how new records are shared. The default is "Ask Before Sharing".
+7. Back in Geetha Health: a preview of the records Health shared. The user picks which ones to import. "Records stay on this device."
+8. After import, the records appear on the Records tab alongside manually entered records.
+9. Imported conditions.
+10. Tapping a record opens it for viewing and editing. Records can also be deleted by swiping.
+11. Imported medications.
+12. Imported allergies.
+13. Health app > Profile > Health Records lists Geetha Health under Apps.
+14. The user can turn off Geetha Health's access to any category here at any time.
+15. If the user taps "Don't Share" in step 3 instead, Geetha Health receives no records. It shows "No health records found" and imports nothing.
