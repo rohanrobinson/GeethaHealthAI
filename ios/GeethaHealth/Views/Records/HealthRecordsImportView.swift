@@ -41,7 +41,7 @@ struct HealthRecordsImportView: View {
                     ContentUnavailableView(
                         "No health records found",
                         systemImage: "heart.text.square",
-                        description: Text("Connect your healthcare provider in the Health app (Browse → Health Records), and make sure Geetha Health has access in Settings → Health → Data Access & Devices.")
+                        description: Text("Connect your healthcare provider in the Health app under Profile → Health Records. If you already have, check that Geetha Health is allowed under Apps on that same screen.")
                     )
                 case .loaded:
                     candidateList

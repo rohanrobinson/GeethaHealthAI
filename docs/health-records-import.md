@@ -21,8 +21,9 @@ Re-running the import later only offers what's new (dedupe below).
 
 ## Testing
 
-- **Simulator:** Health app → Browse → search "Health Records" offers Apple's sample provider data; grant access, then import in Geetha Health.
-- **Real data:** physical iPhone with a provider account connected in Health (Browse → Health Records → Add Account; most major US health systems supported).
+- **Simulator:** Health app → Profile → Health Records → Get Started lists Apple's sample providers (Sample Institution A–C); connect one, then import in Geetha Health. Sample Institution A has allergies, conditions, and medications but no immunizations.
+- **Real data:** physical iPhone with a provider account connected in Health (Profile → Health Records → Add Account; most major US health systems supported).
+- **Denied access:** HealthKit never reports a denial, so tapping "Don't Share" lands on the same "No health records found" state as having no provider. Its copy points to Profile → Health Records, where both cases are fixed — iOS 26's Health app has no Browse tab.
 
 ## Known limitations / later
 
