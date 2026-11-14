@@ -2,6 +2,12 @@ import SwiftUI
 import SwiftData
 
 struct RootView: View {
+    /// The Ask tab (AskView / SymptomAssistant) is hidden for 1.0. In November
+    /// 2026 App Review asked for clinical evaluation evidence for the assistant
+    /// (red-team recall/precision, external clinician review) that doesn't exist
+    /// yet. The code stays so the tab can return once that evidence does.
+    static let showsAskTab = false
+
     @Query(sort: \Profile.createdAt) private var profiles: [Profile]
     @AppStorage(AppLock.enabledKey) private var appLockEnabled = false
     @State private var isUnlocked = true
@@ -15,8 +21,10 @@ struct RootView: View {
                 TabView {
                     RecordsHomeView(profile: profile)
                         .tabItem { Label("Records", systemImage: "heart.text.square") }
-                    AskView(profile: profile)
-                        .tabItem { Label("Ask", systemImage: "sparkles") }
+                    if Self.showsAskTab {
+                        AskView(profile: profile)
+                            .tabItem { Label("Ask", systemImage: "sparkles") }
+                    }
                     DocumentsView(profile: profile)
                         .tabItem { Label("Documents", systemImage: "doc.on.doc") }
                     ProfileView(profile: profile)

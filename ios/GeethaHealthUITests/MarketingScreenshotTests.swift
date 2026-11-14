@@ -50,7 +50,10 @@ final class MarketingScreenshotTests: XCTestCase {
 
         // 4 — Ask. Falls back to the deterministic assistant when Foundation
         // Models is unavailable, which still renders the screen we advertise.
-        captureAskScreen()
+        // Skipped while the tab is hidden (RootView.showsAskTab).
+        if app.tabBars.buttons["Ask"].exists {
+            captureAskScreen()
+        }
     }
 
     // MARK: - Flows

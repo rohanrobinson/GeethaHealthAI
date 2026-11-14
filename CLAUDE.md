@@ -47,7 +47,7 @@ cd site && python3 -m http.server 8000
 Plain SwiftUI + SwiftData. No MVVM, no view models, no DI container: views hold `@Query`/`@Environment(\.modelContext)` and mutate models directly. Keep it that way.
 
 - `GeethaHealthApp.swift` declares the `ModelContainer` — **every new `@Model` type must be added to that array**.
-- `RootView` is the only routing logic: app-lock gate → onboarding if no `Profile` exists → 4-tab `TabView` (Records / Ask / Documents / Profile).
+- `RootView` is the only routing logic: app-lock gate → onboarding if no `Profile` exists → `TabView` (Records / Ask / Documents / Profile). The Ask tab is currently hidden behind `RootView.showsAskTab` — App Review asked for clinical evaluation evidence for the assistant, so it's off until that exists.
 - `Models/` — SwiftData models, one per FHIR resource. `Profile` is the aggregate root; every record type is a cascade-delete relationship off it, and views navigate via `profile.conditions` etc. rather than separate queries.
 - `Services/` — all non-UI logic as enums/actors/`@Observable` classes with no SwiftUI imports.
 - `Views/` — grouped by feature (`Records/`, `Documents/`, `Export/`, `Onboarding/`, `Lock/`).
