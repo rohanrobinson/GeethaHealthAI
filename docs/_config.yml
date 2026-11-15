@@ -15,6 +15,7 @@ title: Geetha Health
 # NOT excluded.
 exclude:
   - DATA_MODEL.md
+  - app-store-connect-api.md
   - autocomplete.md
   - documents.md
   - health-records-import.md
